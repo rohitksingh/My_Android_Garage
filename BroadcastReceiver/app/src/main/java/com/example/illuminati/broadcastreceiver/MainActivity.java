@@ -19,6 +19,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String CUSTOM_BROADCAST = "com.example.illuminati.broadcastreceiver.CUSTOM_BROADCAST";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,13 +32,18 @@ public class MainActivity extends AppCompatActivity {
         /*
            1)Create Instanse of BroadcastReceiver And IntentFilter
            2)Register your reciver
-           3) Thats it :)
+           3)Broadcst your message
+           ALWAYS REGISTER YOUR RECEIVER THEN BROADCAT
+           4) Thats it :)
          */
 
+        Intent i = new Intent(CUSTOM_BROADCAST);
 
         BroadcastReceiver receiver = new MyReceiver();
-        IntentFilter filter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+        IntentFilter filter = new IntentFilter(CUSTOM_BROADCAST);
         registerReceiver(receiver,filter);
+
+        sendBroadcast(i);
 
     }
 
@@ -72,13 +79,10 @@ public class MainActivity extends AppCompatActivity {
             // Write Action that need to run when Recevies a Broadcast Message
 
             //Toast.makeText(context,"headset changed",Toast.LENGTH_SHORT).show();
-            Log.d("Rohit","Battery changed");
+            Log.d("Rohit","INSIDE RECEIVER");
 
         }
     }
 
 
 }
-
-
-
