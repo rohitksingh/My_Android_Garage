@@ -2,9 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main" tools:context=".MainActivity">
@@ -15,14 +13,18 @@
         android:layout_height="wrap_content"
         app:tabMaxWidth="0dp"
         app:tabGravity="fill"
-        app:tabMode="fixed" />
+        app:tabMode="fixed"
+        app:tabBackground="@color/colorPrimary"
+        app:tabSelectedTextColor="#FFFFFF"
+        />
 
 
     <android.support.v4.view.ViewPager
         android:id="@+id/mediaViewPager"
-        android:layout_height="0px"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:background="@color/colorPrimary"
+        android:layout_below="@id/swipeTabs"
 
         />
 
