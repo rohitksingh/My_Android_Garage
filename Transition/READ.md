@@ -1,9 +1,9 @@
-# Reveal Animation.
+# Reveal Animation made simple ! 
 
 ![687474703a2f2f692e696d6775722e636f6d2f5a4e6c344642322e676966](https://user-images.githubusercontent.com/11274840/30338466-a2801128-97a0-11e7-988d-137ca0557a1c.gif)
 
 
-The only thing you are going to use is this method.   
+The **only** thing you are going to use is this method.   
 
 **ViewAnimationUtils.createCircularReveal(layout, centerX, centerY, startRadius, endRadius);**
 
