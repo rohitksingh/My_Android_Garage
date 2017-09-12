@@ -1,8 +1,10 @@
-# My Android Garage
+# My Android Garage  
+ 
+ (Don't feel shy to star this repository to show your support for this project)
 ![android-mobile-application-development](https://user-images.githubusercontent.com/11274840/30295615-0e67cd96-96f6-11e7-8e50-e5117446d766.png)             
     
     
-##This is the "**Quick Reference Repository**" for Android Related work.
+## This is the "**Quick Reference Repository**" for Android Related work.
 
 This repository contains following **code samples**. (Currently, More to come).
 
