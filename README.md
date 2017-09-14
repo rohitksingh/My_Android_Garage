@@ -23,3 +23,6 @@ This repository contains following **code samples**. (Currently, More to come).
 ![687474703a2f2f692e696d6775722e636f6d2f5a4e6c344642322e676966](https://user-images.githubusercontent.com/11274840/30338466-a2801128-97a0-11e7-988d-137ca0557a1c.gif)
 
 ## [Read More on BroadCastReceiver](https://github.com/rohitksingh/My_Android_Garage/blob/master/BroadcastReceiver/READ.md)
+
+## [Read More on Custom Fonts](https://github.com/rohitksingh/My_Android_Garage/blob/master/UI_Stuff/Themes/READ.md)
+
