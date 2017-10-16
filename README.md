@@ -9,6 +9,7 @@
 This repository contains following **code samples**. (Currently, More to come).
 
 - [REST call and JSON Parsing using Volley](https://github.com/rohitksingh/My_Android_Garage/tree/master/Volley)
+- [Moshi: Parse JSON to POJO/model class](https://github.com/rohitksingh/My_Android_Garage/tree/master/Moshi)
 - [Transition API (Slide,Explode,Reveal Transition)](https://github.com/rohitksingh/My_Android_Garage/tree/master/Transition)
 - [Service (Updating UI with Async Task for foreground)](https://github.com/rohitksingh/My_Android_Garage/tree/master/Services)
 - [Library Project](https://github.com/rohitksingh/My_Android_Garage/tree/master/MyLibrary)
@@ -21,6 +22,8 @@ This repository contains following **code samples**. (Currently, More to come).
 
 ## [Read More on Reveal Animation](https://github.com/rohitksingh/My_Android_Garage/blob/master/Transition/READ.md)
 ![687474703a2f2f692e696d6775722e636f6d2f5a4e6c344642322e676966](https://user-images.githubusercontent.com/11274840/30338466-a2801128-97a0-11e7-988d-137ca0557a1c.gif)
+
+## [Read More on Moshi Library](https://medium.com/@r4rohit002/parse-json-with-moshi-873d0ff6af9b)![1-esg1tgfdfx73ejudv08okg](https://user-images.githubusercontent.com/11274840/31598237-1dc01a84-b26a-11e7-8f4e-d9b46957ce71.png)
 
 ## [Read More on BroadCastReceiver](https://github.com/rohitksingh/My_Android_Garage/blob/master/BroadcastReceiver/READ.md)
 
