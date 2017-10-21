@@ -1,5 +1,6 @@
 package com.rohksin.firebaserealtimedb;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.StringDef;
 import android.support.design.widget.FloatingActionButton;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView;
     private Button sunny;
     private Button foggy;
+    private Button second;
 
     DatabaseReference rootref = FirebaseDatabase.getInstance().getReference();
     DatabaseReference conditionRef = rootref.child("condition");
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         textView = (TextView)findViewById(R.id.weather);
         sunny = (Button)findViewById(R.id.sunny);
         foggy = (Button)findViewById(R.id.foggy);
+        second = (Button)findViewById(R.id.secondActivity);
 
         sunny.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +51,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 conditionRef.setValue("It's Foggy !!!");
+            }
+        });
+
+        second.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,SecondActivity.class));
             }
         });
 
