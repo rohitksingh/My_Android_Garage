@@ -37,6 +37,20 @@ public class MainActivity extends AppCompatActivity {
         sunny = (Button)findViewById(R.id.sunny);
         foggy = (Button)findViewById(R.id.foggy);
 
+        sunny.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                conditionRef.setValue("It's Sunny");
+            }
+        });
+
+        foggy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                conditionRef.setValue("It's Foggy !!!");
+            }
+        });
+
     }
 
     @Override
