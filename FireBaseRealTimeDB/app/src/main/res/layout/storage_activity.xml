@@ -19,4 +19,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         />
+    <Button
+        android:text="Auth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/authButton"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        />
 </RelativeLayout>

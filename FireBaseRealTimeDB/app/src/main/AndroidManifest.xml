@@ -21,6 +21,8 @@
         </activity>
         <activity android:name=".SecondActivity"/>
         <activity android:name=".FireBaseStorageActivity"/>
+        <activity android:name=".FireBaseAuthActivity"/>
+        <activity android:name=".ProfileActivity"/>
     </application>
 
 </manifest>

@@ -1,12 +1,12 @@
 package com.rohksin.firebaserealtimedb;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -25,6 +25,7 @@ public class FireBaseStorageActivity extends AppCompatActivity{
 
     private ImageView imageToUpload;
     private Button uploadButton;
+    private Button authButton;
 
     private FirebaseStorage storage = FirebaseStorage.getInstance();
 
@@ -35,11 +36,19 @@ public class FireBaseStorageActivity extends AppCompatActivity{
         setContentView(R.layout.storage_activity);
         imageToUpload = (ImageView)findViewById(R.id.imageToUpload);
         uploadButton = (Button)findViewById(R.id.UplaodButton);
-
+        authButton = (Button)findViewById(R.id.authButton);
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 uploadImage();
+            }
+        });
+
+        authButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(FireBaseStorageActivity.this, FireBaseAuthActivity.class));
             }
         });
 
