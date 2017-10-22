@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "238225148645",
+    "firebase_url": "https://demoauth-96c75.firebaseio.com",
+    "project_id": "demoauth-96c75",
+    "storage_bucket": "demoauth-96c75.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:238225148645:android:33f6fd72896c9fa1",
+        "android_client_info": {
+          "package_name": "com.rohksin.firebaseauthentication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "238225148645-i5fvtuf42gp5m4vr9ba9ih7hju7oka5o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rohksin.firebaseauthentication",
+            "certificate_hash": "738bec4329915474ff58e5e170028dfdc6cea837"
+          }
+        },
+        {
+          "client_id": "238225148645-pvohuhnnn6po62oirls2ikd29o0qjqas.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaScEJUpHV9EtamuNKLcCHVkJ0GNphyLY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "238225148645-pvohuhnnn6po62oirls2ikd29o0qjqas.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

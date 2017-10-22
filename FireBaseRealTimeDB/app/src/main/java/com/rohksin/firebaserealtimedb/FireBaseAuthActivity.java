@@ -151,7 +151,7 @@ public class FireBaseAuthActivity extends AppCompatActivity implements GoogleApi
                         }
                         else
                         {
-                            Log.d("Auth","Firebase Auth not success");
+                            Log.d("Auth","Firebase Auth not success" );
                         }
 
                     }

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FireBase Authentication</string>
+    <string name="action_settings">Settings</string>
+</resources>
