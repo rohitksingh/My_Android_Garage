@@ -12,6 +12,13 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -23,6 +30,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
@@ -33,6 +41,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private FirebaseUser currentUser;
     private SignInButton googleSignInButton;
 
+    private LoginButton facebookLoginButton;
+
     /*
        Req codes for diffrent providers
      */
@@ -40,10 +50,19 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private static final int GOOGLE_SIGN_IN_REQ_CODE = 9001;
 
 
+    /*
+    Facebook related
+     */
+
+    private CallbackManager callbackManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
+
         setContentView(R.layout.activity_main);
         firebaseAuth = FirebaseAuth.getInstance();
         currentUser = firebaseAuth.getCurrentUser();
@@ -55,6 +74,35 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 googleSignIn();
             }
         });
+
+
+
+        /*
+         Facebook Button
+         */
+
+        callbackManager = CallbackManager.Factory.create();
+        facebookLoginButton = (LoginButton)findViewById(R.id.facebookLoginButton);
+        facebookLoginButton.setReadPermissions("email","public_profile");
+        facebookLoginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Log.d("FacebookAuth","Success");
+                fireBaseAuthWithFacebook(loginResult.getAccessToken());
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                Log.d("FacebookAuth","failed");
+            }
+        });
+
+
 
 
     }
@@ -99,6 +147,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     @Override
     public void onActivityResult(int reqCode, int resCode, Intent data)
     {
+
+        callbackManager.onActivityResult(reqCode, resCode, data);
 
         if(reqCode == GOOGLE_SIGN_IN_REQ_CODE)
         {
@@ -148,7 +198,24 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     }
                 });
 
+    }
 
+
+    private void fireBaseAuthWithFacebook(AccessToken accessToken)
+    {
+        AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
+
+        firebaseAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        currentUser = firebaseAuth.getCurrentUser();
+                        Log.d("facebook user null ",(currentUser==null)+"");
+
+                        openProfileActivity();
+                    }
+                });
 
 
     }

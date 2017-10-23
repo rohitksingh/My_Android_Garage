@@ -36,6 +36,9 @@ public class ProfileActivity extends AppCompatActivity {
         userName = (TextView)findViewById(R.id.username);
         emailId = (TextView)findViewById(R.id.emailId);
 
+
+       // userName.setText("somr tandom text");
+
         userName.setText(user.getDisplayName());
         emailId.setText(user.getEmail());
 

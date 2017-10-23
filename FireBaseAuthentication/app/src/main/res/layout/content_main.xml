@@ -9,13 +9,11 @@
     tools:showIn="@layout/activity_main">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:text="Sign In Page"
         android:layout_alignParentTop="true"
-        android:textSize="20dp"
-        android:layout_centerHorizontal="true"
-        />
+        android:textSize="20dp" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/googleSignIn"
@@ -23,6 +21,21 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         />
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/facebookLoginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_below="@id/googleSignIn"
+
+        />
+
+
+
+
 
 
 </RelativeLayout>
