@@ -34,6 +34,15 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.auth.TwitterAuthProvider;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.Twitter;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.TwitterConfig;
+import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
 
@@ -56,12 +65,33 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     private CallbackManager callbackManager;
 
+
+    /*
+        Twitter related
+     */
+
+    private TwitterLoginButton twitterLoginButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
         FacebookSdk.sdkInitialize(getApplicationContext());
+
+
+        TwitterAuthConfig twitterAuthConfig = new TwitterAuthConfig(
+                getString(R.string.twitter_consumer_key),
+                getString(R.string.twitter_consumer_secret)
+        );
+
+        TwitterConfig twitterConfig = new TwitterConfig.Builder(this)
+                .twitterAuthConfig(twitterAuthConfig)
+                .build();
+
+        Twitter.initialize(twitterConfig);
+
+
 
         setContentView(R.layout.activity_main);
         firebaseAuth = FirebaseAuth.getInstance();
@@ -99,6 +129,24 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             @Override
             public void onError(FacebookException error) {
                 Log.d("FacebookAuth","failed");
+            }
+        });
+
+
+        /*
+        Twitter related
+         */
+
+        twitterLoginButton = (TwitterLoginButton)findViewById(R.id.twitterLoginButton);
+        twitterLoginButton.setCallback(new Callback<TwitterSession>() {
+            @Override
+            public void success(Result<TwitterSession> result) {
+                Log.d("Twitter auth", "success");
+            }
+
+            @Override
+            public void failure(TwitterException exception) {
+                Log.d("Twitter auth", "failure");
             }
         });
 
@@ -149,6 +197,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     {
 
         callbackManager.onActivityResult(reqCode, resCode, data);
+
+        twitterLoginButton.onActivityResult(reqCode,resCode,data);
 
         if(reqCode == GOOGLE_SIGN_IN_REQ_CODE)
         {
@@ -217,6 +267,21 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     }
                 });
 
+
+    }
+
+    private void fireBaseAuthWithTwitter(TwitterSession session)
+    {
+         AuthCredential credential = TwitterAuthProvider.getCredential(session.getAuthToken().token,session.getAuthToken().secret);
+
+        firebaseAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.d("Twitter","Success");
+                        openProfileActivity();
+                    }
+                });
 
     }
 
