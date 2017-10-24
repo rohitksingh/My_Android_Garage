@@ -142,6 +142,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             @Override
             public void success(Result<TwitterSession> result) {
                 Log.d("Twitter auth", "success");
+                fireBaseAuthWithTwitter(result.data);
             }
 
             @Override

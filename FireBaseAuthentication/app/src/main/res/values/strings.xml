@@ -3,6 +3,6 @@
     <string name="action_settings">Settings</string>
     <string name="facebook_app_id">294034017767523</string>
     <string name="fb_login_protocol_scheme">fb294034017767523</string>
-    <string name="twitter_consumer_key">vCKg1nd02ERNhldp92lzws4MidEd7DMLcWbS9Hz8XMImO312oy</string>
-    <string name="twitter_consumer_secret">hnSgto6wWCH0lkKdQD6AnA4YB</string>
+    <string name="twitter_consumer_key">hnSgto6wWCH0lkKdQD6AnA4YB</string>
+    <string name="twitter_consumer_secret">vCKg1nd02ERNhldp92lzws4MidEd7DMLcWbS9Hz8XMImO312oy</string>
 </resources>
