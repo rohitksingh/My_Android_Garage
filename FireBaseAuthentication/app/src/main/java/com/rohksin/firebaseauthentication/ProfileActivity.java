@@ -1,11 +1,16 @@
 package com.rohksin.firebaseauthentication;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.FacebookSdk;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
@@ -47,10 +52,36 @@ public class ProfileActivity extends AppCompatActivity {
                 .into(profileImage);
 
 
+
+        profileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.d("facebook","share");
+                ShareLinkContent shareLinkContent = new ShareLinkContent.Builder()
+                        .setContentUrl(Uri.parse("https://developers.facebook.com"))
+                        .build();
+
+                shareLink(shareLinkContent);
+
+
+
+            }
+        });
+
+
+
         Log.d("Auth provider Id",user.getProviderId());
 
 
 
+    }
+
+
+    public void shareLink(ShareLinkContent shareLinkContent)
+    {
+        ShareDialog shareDialog = new ShareDialog(this);
+        shareDialog.show(shareLinkContent);
     }
 
 

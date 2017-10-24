@@ -27,6 +27,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".ProfileActivity"/>
+
+        <provider
+            android:authorities="com.facebook.app.294034017767523"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true"
+            />
     </application>
 
 </manifest>
