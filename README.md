@@ -8,6 +8,8 @@
 
 This repository contains following **code samples**. (Currently, More to come).
 
+- [FireBase Authentication: Google + Facebook + Twitter ](https://github.com/rohitksingh/My_Android_Garage/tree/master/FireBaseAuthentication)
+- [FireBase RealTime DataBase](https://github.com/rohitksingh/My_Android_Garage/tree/master/FireBaseRealTimeDB)
 - [REST call and JSON Parsing using Volley](https://github.com/rohitksingh/My_Android_Garage/tree/master/Volley)
 - [Moshi: Parse JSON to POJO/model class](https://github.com/rohitksingh/My_Android_Garage/tree/master/Moshi)
 - [Transition API (Slide,Explode,Reveal Transition)](https://github.com/rohitksingh/My_Android_Garage/tree/master/Transition)
