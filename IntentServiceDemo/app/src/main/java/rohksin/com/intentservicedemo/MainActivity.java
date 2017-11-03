@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView;
     private IntentFilter filter;
 
+    private Button secondActivityButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,14 @@ public class MainActivity extends AppCompatActivity {
                 startService(intent);
 
 
+            }
+        });
+
+        secondActivityButton = (Button)findViewById(R.id.secondActivity);
+        secondActivityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,SecondActivity.class));
             }
         });
 

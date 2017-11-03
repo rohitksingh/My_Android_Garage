@@ -20,8 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SecondActivity"/>
-        <service android:name=".TimerService"
-            />
+        <service android:name=".TimerService" />
+        <service android:name=".DemoForeGroundService"/>
 
 
     </application>
