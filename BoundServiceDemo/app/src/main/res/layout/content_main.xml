@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="rohksin.com.boundservicedemo.MainActivity"
+    tools:showIn="@layout/activity_main"
+    android:background="#c02c3a"
+    >
+
+    <ImageView
+        android:layout_centerHorizontal="true"
+        android:background="@android:drawable/ic_lock_idle_alarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Location"
+        android:layout_centerInParent="true"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="#ffffff"
+        />
+    <Button
+        android:id="@+id/getLoaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/MyButton"
+        android:text="Get Current Location"
+        android:layout_below="@id/location"
+        android:layout_marginTop="70dp"
+        />
+    <Button
+        android:id="@+id/startService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/MyButton"
+        android:text="Start Location Updates"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        />
+
+</RelativeLayout>
