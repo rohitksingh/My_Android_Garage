@@ -24,6 +24,8 @@ public class SecondActivity extends AppCompatActivity {
     private Button button;
     public TextView textView;
 
+    public Button startThirdActivityButton;
+
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -38,6 +40,14 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(SecondActivity.this, DemoForeGroundService.class);
                 startService(i);
+            }
+        });
+
+        startThirdActivityButton = (Button)findViewById(R.id.boundServiceActivity);
+        startThirdActivityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SecondActivity.this, ThirdActivity.class));
             }
         });
 

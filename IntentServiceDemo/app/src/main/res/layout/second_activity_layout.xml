@@ -15,6 +15,15 @@
         android:text="Start Foreground"
         />
 
+    <Button
+        android:id="@+id/boundServiceActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="ThirdActivivty"
+        />
+
     <TextView
         android:id="@+id/counter"
         android:layout_width="wrap_content"

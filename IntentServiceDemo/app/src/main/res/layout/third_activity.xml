@@ -12,22 +12,15 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:text="Start Service"
+        android:text="Start BoumdService"
         />
+
     <TextView
-        android:id="@+id/timer"
+        android:id="@+id/currntTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Value"
         android:layout_centerInParent="true"
         />
 
-    <Button
-        android:id="@+id/secondActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:text="Second Activity"
-        />
 </RelativeLayout>
