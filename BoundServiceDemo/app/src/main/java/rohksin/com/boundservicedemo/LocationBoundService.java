@@ -20,10 +20,25 @@ import android.util.Log;
  * Created by Illuminati on 11/4/2017.
  */
 
-public class LocationBoundService extends Service {
+public class LocationBoundService extends Service{
 
     private String currentLoaction;
     private IBinder locationBinder = new LocationBinder();
+
+
+    private Location location;
+    private double longitude;
+    private double latitude;
+    private boolean isGPSEnabled;
+    private boolean isNetworkEnabled;
+    private boolean canGetLocation;
+    private static int  LOCATION_UPDATE_INTERVAL;
+    private static int LOCATION_UPDATE_DISTANCE;
+
+    private LocationManager locationManager;
+    private LocationListener locationListener;
+
+
 
     @Nullable
     @Override
@@ -46,15 +61,16 @@ public class LocationBoundService extends Service {
         super.onDestroy();
     }
 
-    public String getCurrentLoaction() {
+    @Override
+    public void onCreate() {
 
 
+        locationManager  = (LocationManager) getSystemService(LOCATION_SERVICE);
 
-        LocationListener locationListener = new LocationListener() {
+        locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                currentLoaction = location.getLatitude() + "" + location.getLatitude();
-                Log.d("Location",currentLoaction);
+
             }
 
             @Override
@@ -72,37 +88,91 @@ public class LocationBoundService extends Service {
 
             }
         };
-        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
+    }
 
 
 
+    public String getCurrentLoaction() {
+
+        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+        isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+
+        if (!isGPSEnabled && !isNetworkEnabled) {
+            Log.d("location", "No network provider is available");
+        } else {
+            canGetLocation = true;
+
+            if (isNetworkEnabled) {
+
+
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    //return TODO;
+                }
+
+                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, LOCATION_UPDATE_INTERVAL, LOCATION_UPDATE_DISTANCE, locationListener);
+
+                if(locationManager!=null)
+                {
+                    location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+                    if(location!=null)
+                    {
+                        longitude = location.getLongitude();
+                        latitude = location.getLatitude();
+                    }
+                }
+
+            }
+
+
+            if(isGPSEnabled)
+            {
+                if(location==null)
+                {
+                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,LOCATION_UPDATE_INTERVAL,LOCATION_UPDATE_DISTANCE,locationListener);
+
+                    if(locationManager!=null)
+                    {
+                        location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+                        if(location!=null)
+                        {
+                            latitude = location.getLatitude();
+                            longitude = location.getLongitude();
+                        }
+                    }
+                }
+            }
 
         }
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 60000, locationListener);
 
+        currentLoaction = "Latitude :"+latitude+"\nLongitude :"+longitude;
 
+        Log.d("location",currentLoaction);
 
         return currentLoaction;
     }
-
 
 
     public class LocationBinder extends Binder{
 
         public LocationBoundService getService()
         {
-            return LocationBoundService.this;
+            return  LocationBoundService.this;
         }
 
     }
+
+
 
 
 
