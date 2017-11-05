@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private IntentFilter filter;
 
     private Button secondActivityButton;
+    private Button stickyService;
 
 
     @Override
@@ -59,6 +60,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,SecondActivity.class));
+            }
+        });
+
+        stickyService = (Button)findViewById(R.id.stickyService);
+        stickyService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("Sticky","On click called");
+                startService(new Intent(MainActivity.this, StickyService.class));
             }
         });
 

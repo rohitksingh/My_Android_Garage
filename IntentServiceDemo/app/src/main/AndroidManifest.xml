@@ -24,6 +24,7 @@
         <service android:name=".TimerService" />
         <service android:name=".DemoForeGroundService"/>
         <service android:name=".DemoBoundService"/>
+        <service android:name=".StickyService"/>
 
 
 
