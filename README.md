@@ -10,6 +10,10 @@ This repository contains following **code samples**. (Currently, More to come).
 
 - [FireBase Authentication: Google + Facebook + Twitter ](https://github.com/rohitksingh/My_Android_Garage/tree/master/FireBaseAuthentication)
 - [FireBase RealTime DataBase](https://github.com/rohitksingh/My_Android_Garage/tree/master/FireBaseRealTimeDB)
+- [Bound Service demo: Get location coordinates ](https://github.com/rohitksingh/My_Android_Garage/tree/master/BoundServiceDemo)
+- [Foreground Service Demo](https://github.com/rohitksingh/My_Android_Garage/blob/master/IntentServiceDemo/app/src/main/java/rohksin/com/intentservicedemo/DemoForeGroundService.java)
+- [IntentService Demo](https://github.com/rohitksingh/My_Android_Garage/blob/master/IntentServiceDemo/app/src/main/java/rohksin/com/intentservicedemo/TimerService.java)
+- [GPS Location and Runtime Permission](https://github.com/rohitksingh/My_Android_Garage/tree/master/GPSLocationDemo)
 - [REST call and JSON Parsing using Volley](https://github.com/rohitksingh/My_Android_Garage/tree/master/Volley)
 - [Moshi: Parse JSON to POJO/model class](https://github.com/rohitksingh/My_Android_Garage/tree/master/Moshi)
 - [Transition API (Slide,Explode,Reveal Transition)](https://github.com/rohitksingh/My_Android_Garage/tree/master/Transition)
