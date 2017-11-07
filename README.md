@@ -26,6 +26,9 @@ This repository contains following **code samples**. (Currently, More to come).
 - [RecyclerView Demo](https://github.com/rohitksingh/My_Android_Garage/tree/master/UI_Stuff/RecyclerView)
 - [TabLayout with fragments using inheritance](https://github.com/rohitksingh/My_Android_Garage/tree/master/UI_Stuff/GooglePlayTabLayout)
 
+## [Read More on Services: IntentService + Foreground  Services + Bound Services + Sticky Services](https://github.com/rohitksingh/My_Android_Garage/tree/master/IntentServiceDemo)
+![687474703a2f2f692e696d6775722e636f6d2f5a4e6c344642322e676966](https://user-images.githubusercontent.com/11274840/30338466-a2801128-97a0-11e7-988d-137ca0557a1c.gif)
+
 ## [Read More on Reveal Animation](https://github.com/rohitksingh/My_Android_Garage/blob/master/Transition/READ.md)
 ![687474703a2f2f692e696d6775722e636f6d2f5a4e6c344642322e676966](https://user-images.githubusercontent.com/11274840/30338466-a2801128-97a0-11e7-988d-137ca0557a1c.gif)
 
