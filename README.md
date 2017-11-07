@@ -14,6 +14,8 @@ This repository contains following **code samples**. (Currently, More to come).
 - [Foreground Service Demo](https://github.com/rohitksingh/My_Android_Garage/blob/master/IntentServiceDemo/app/src/main/java/rohksin/com/intentservicedemo/DemoForeGroundService.java)
 - [IntentService Demo](https://github.com/rohitksingh/My_Android_Garage/blob/master/IntentServiceDemo/app/src/main/java/rohksin/com/intentservicedemo/TimerService.java)
 - [GPS Location and Runtime Permission](https://github.com/rohitksingh/My_Android_Garage/tree/master/GPSLocationDemo)
+- [Alarm Manager: Starting an Activity at scheduled time](https://github.com/rohitksingh/My_Android_Garage/tree/master/AlarmManagerDemo)
+- [Job Scheduler: Schedule task when device connects to WIFI network](https://github.com/rohitksingh/My_Android_Garage/tree/master/JobSchedulerDemo)
 - [REST call and JSON Parsing using Volley](https://github.com/rohitksingh/My_Android_Garage/tree/master/Volley)
 - [Moshi: Parse JSON to POJO/model class](https://github.com/rohitksingh/My_Android_Garage/tree/master/Moshi)
 - [Transition API (Slide,Explode,Reveal Transition)](https://github.com/rohitksingh/My_Android_Garage/tree/master/Transition)
@@ -26,8 +28,11 @@ This repository contains following **code samples**. (Currently, More to come).
 - [RecyclerView Demo](https://github.com/rohitksingh/My_Android_Garage/tree/master/UI_Stuff/RecyclerView)
 - [TabLayout with fragments using inheritance](https://github.com/rohitksingh/My_Android_Garage/tree/master/UI_Stuff/GooglePlayTabLayout)
 
-## [Read More on Services: IntentService + Foreground  Services + Bound Services + Sticky Services](https://github.com/rohitksingh/My_Android_Garage/tree/master/IntentServiceDemo)
+## [Getting started with Android Services: IntentService + Foreground  Services + Bound Services + Sticky Services](https://github.com/rohitksingh/My_Android_Garage/tree/master/IntentServiceDemo)
 ![mediaplayer-service](https://user-images.githubusercontent.com/11274840/32488276-1cc4e2a8-c3d2-11e7-923a-9920836e54a1.png)
+
+## [Schedule tasks with AlarmManager and JobScheduler](https://github.com/rohitksingh/My_Android_Garage/blob/master/JobSchedulerDemo/README.md)
+![time](https://user-images.githubusercontent.com/11274840/32495496-e09097cc-c3eb-11e7-80a3-45a13ee16e95.jpg)
 
 ## [Read More on Reveal Animation](https://github.com/rohitksingh/My_Android_Garage/blob/master/Transition/READ.md)
 ![687474703a2f2f692e696d6775722e636f6d2f5a4e6c344642322e676966](https://user-images.githubusercontent.com/11274840/30338466-a2801128-97a0-11e7-988d-137ca0557a1c.gif)
