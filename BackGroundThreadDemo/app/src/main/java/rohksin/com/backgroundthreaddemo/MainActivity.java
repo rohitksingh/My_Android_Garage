@@ -2,6 +2,7 @@ package rohksin.com.backgroundthreaddemo;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -21,10 +22,77 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         textView = (TextView)findViewById(R.id.text);
 
+
+        /*
+         AsyncTask Demo
+         */
         //new TimerTask().execute(10);
 
         String[] names = new String[]{"Ram", "Shyam", "Ghanshyam", "kalam"};
         new DummyTask().execute(names);
+
+
+        ///////////////////////////////////////////
+               //  Handler demo
+        //////////////////////////////////////////////////////////////////
+
+        /*
+        final Handler handler = new Handler();
+
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        for(int i=0;i<10;i++)
+                        {
+                            textView.setText("Handler "+i);
+
+                            try {
+                                Thread.sleep(1000);                       //<---------- It causes Main UI Thread sleep ?
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                });
+            }
+        });
+  */
+
+
+        //////////////////////////////////////////////////////////////////
+                 //Handler demo finished
+        //////////////////////////////////////////////////////////////////
+
+      /*
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+
+                        for(int i=0;i<10;i++) {
+
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+
+                            textView.setText(i);
+                        }
+                    }
+                });
+            }
+        });
+*/
+
+
+
 
     }
 

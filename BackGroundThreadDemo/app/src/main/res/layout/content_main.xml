@@ -10,5 +10,6 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textSize="30sp"
+        android:text="Background Thread"
         />
 </RelativeLayout>
