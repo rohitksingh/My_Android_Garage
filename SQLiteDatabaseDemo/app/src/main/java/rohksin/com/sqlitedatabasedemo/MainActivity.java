@@ -2,6 +2,7 @@ package rohksin.com.sqlitedatabasedemo;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -21,17 +22,23 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    private MyDatabaseHelper databaseHelper;
+    private SQLiteDatabase sqLiteDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        databaseHelper = new MyDatabaseHelper(MainActivity.this);
+
+
+
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         LinearLayoutManager llm = new LinearLayoutManager(MainActivity.this);
         recyclerView.setLayoutManager(llm);
-        PeopleAdapter adapter = new PeopleAdapter(MainActivity.this,dummyList());
-        recyclerView.setAdapter(adapter);
+
+        setUpList();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -57,9 +64,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public List<People> getRealList()
+    {
+        return databaseHelper.getPeopleList();
+    }
+
     public void add(People people)
     {
-
+         databaseHelper.addPeople(people);
     }
 
     public void delete(People people)
@@ -79,6 +91,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    private void setUpList()
+    {
+        List<People> peopleList = getRealList();
+        PeopleAdapter adapter = new PeopleAdapter(MainActivity.this,peopleList);
+        recyclerView.setAdapter(adapter);
+    }
+
+
     private class AddDialog extends Dialog{
 
         private Button addButton;
@@ -95,12 +115,28 @@ public class MainActivity extends AppCompatActivity {
             setContentView(R.layout.add_dialog);
 
             cancelButton = (Button)findViewById(R.id.cancel);
+            addButton = (Button)findViewById(R.id.add);
             cancelButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     dismiss();
                 }
             });
+
+            addButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    People dummy = new People();
+                    dummy.setFname("dummyRohit");
+                    dummy.setLname("dummySingh");
+                    add(dummy);
+                    setUpList();
+                    dismiss();
+                }
+            });
+
 
         }
     }
