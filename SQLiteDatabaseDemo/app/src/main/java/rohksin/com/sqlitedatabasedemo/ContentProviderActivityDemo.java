@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
@@ -29,7 +30,7 @@ public class ContentProviderActivityDemo extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_main);
 
-        List<Music> musicList = getAllMusicFiles();
+        List<Music> musicList = getAllMusicFilesUsingLoaders();
 
         for (int i=0;i<musicList.size();i++)
         {
@@ -40,13 +41,30 @@ public class ContentProviderActivityDemo extends AppCompatActivity{
     }
 
 
-    public ArrayList<Music> getAllMusicFiles()
+    public List<Music> getAllMusicFiles()
     {
         Cursor musicCursor = getContentResolver().query(MUSIC_FILE_LOCATION,proj, null, null, null, null);
-        int noOfResults = musicCursor.getCount();
+
+        return loadFromCursor(musicCursor);
+
+    }
+
+
+    public List<Music> getAllMusicFilesUsingLoaders()
+    {
+
+        CursorLoader cursorLoader = new CursorLoader(ContentProviderActivityDemo.this, MUSIC_FILE_LOCATION , proj , null, null,null);
+        Cursor musicCursor = cursorLoader.loadInBackground();
+
+        return loadFromCursor(musicCursor);
+    }
+
+
+    public List<Music> loadFromCursor(Cursor musicCursor)
+    {
         musicFiles = new ArrayList<Music>();
 
-        for(int i=0;i<noOfResults;i++)
+        for(int i=0;i<musicCursor.getCount();i++)
         {
             musicCursor.moveToNext();
             Music music = new Music();
