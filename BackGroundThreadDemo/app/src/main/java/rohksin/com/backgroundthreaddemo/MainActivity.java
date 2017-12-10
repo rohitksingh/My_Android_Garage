@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private TextView textView;
+    private TimerTask task;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,13 +25,20 @@ public class MainActivity extends AppCompatActivity {
         textView = (TextView)findViewById(R.id.text);
 
 
+
+
+        Log.d("Grace","grace"+(task==null));
+
+
         /*
          AsyncTask Demo
          */
-        //new TimerTask().execute(10);
+        task =  new TimerTask();
+        task.execute(10);
 
-        String[] names = new String[]{"Ram", "Shyam", "Ghanshyam", "kalam"};
-        new DummyTask().execute(names);
+
+        //String[] names = new String[]{"Ram", "Shyam", "Ghanshyam", "kalam"};
+       // new DummyTask().execute(names);
 
 
         ///////////////////////////////////////////
@@ -97,6 +106,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+        Log.d("Task",(task.isCancelled()==true)+"");
+        task.cancel(false);
+        Log.d("Task",(task.isCancelled()==true)+"");
+    }
 
 
     public class TimerTask extends AsyncTask<Integer, Integer, String>{
@@ -188,6 +205,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
+
+
 
 
 }
