@@ -7,7 +7,6 @@ import android.provider.MediaStore;
 import android.support.v4.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,12 +29,17 @@ public class ContentProviderActivityDemo extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_main);
 
+        myCursorTest();       //<-------- getting data from custom contentprovider
+
+
+        /*
         List<Music> musicList = getAllMusicFilesUsingLoaders();
 
         for (int i=0;i<musicList.size();i++)
         {
             Log.d("Num of files",musicList.get(i).toString());
         }
+        */
 
 
     }
@@ -74,5 +78,15 @@ public class ContentProviderActivityDemo extends AppCompatActivity{
         }
 
         return musicFiles;
+    }
+
+
+    public void myCursorTest()
+    {
+        String PROVIDER_NAME = "rohksin.com.sqlitedatabasedemo.NameProvider";
+        String URL = "content://"+PROVIDER_NAME+"/names";
+        Uri CONTENT_URI = Uri.parse(URL);
+        Cursor myCursor = getContentResolver().query(CONTENT_URI,null,null,null,null,null);
+        Log.d("MyCustomProviderTest",myCursor.getCount()+"");
     }
 }

@@ -21,6 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <provider
+            android:authorities="rohksin.com.sqlitedatabasedemo.NameProvider"
+            android:name="rohksin.com.sqlitedatabasedemo.MyContentProvider"/>
     </application>
 
 </manifest>

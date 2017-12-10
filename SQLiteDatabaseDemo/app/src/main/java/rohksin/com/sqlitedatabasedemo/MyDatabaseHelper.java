@@ -17,21 +17,26 @@ import java.util.List;
 public class MyDatabaseHelper extends SQLiteOpenHelper{
 
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////                           Main Databse                              //////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+
     public final static String DATABASE_NAME = "Mydatabase.db";          //<--- ir gives compile time erroe it it is not static
     public final static int DATABASE_VERSION = 1;
+    private SQLiteDatabase db;
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////                          People Table                               //////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////
     public final String TABLE_NAME = "PEOPLE";
     public final String COLUMN_ID = "ID";
     public final String FIRST_NAME = "FIRST_NAME";
     public final String LAST_NAME = "LAST_NAME";
 
-
-    private SQLiteDatabase db;
-
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////                           Raw Queries                               //////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////
     private  final String CREATE_TABLE = "create table "+TABLE_NAME +" ( " + COLUMN_ID +" INTEGER PRIMARY KEY AUTOINCREMENT," + FIRST_NAME +" VARCHAR," + LAST_NAME + " VARCHAR );";
-
-    //String cr = "create table " + TABLE_NAME + " ( " + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + FIRST_NAME + " VARCHAR, " + LAST_NAME + " VARCHAR);";
-
     private final String DROP_TABLE = "drop table if exists "+ TABLE_NAME;
 
 
@@ -42,35 +47,29 @@ public class MyDatabaseHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
             db.execSQL(CREATE_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
         db.execSQL(DROP_TABLE);
         onCreate(db);
-
     }
 
 
     public void addPeople(People people)
     {
         db = this.getReadableDatabase();
-
         ContentValues contentValues = new ContentValues();
         contentValues.put(FIRST_NAME,people.getLname());
         contentValues.put(LAST_NAME,people.getFname());
         db.insert(TABLE_NAME,null,contentValues);
         db.close();
-
     }
 
     public List<People> getPeopleList()
     {
         db = this.getReadableDatabase();
-
         Cursor cursor = db.query(TABLE_NAME,null,null,null,null,null,null);
 
         int length = cursor.getCount();
@@ -87,6 +86,14 @@ public class MyDatabaseHelper extends SQLiteOpenHelper{
         }
 
         return people;
+    }
+
+
+    /////////// For data sharing
+    public Cursor getPeopleList(String TABLE_NAME)
+    {
+         db = this.getReadableDatabase();
+         return db.query(TABLE_NAME,null,null,null,null,null,null);
     }
 
 }

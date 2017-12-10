@@ -29,15 +29,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         databaseHelper = new MyDatabaseHelper(MainActivity.this);
-
-
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         LinearLayoutManager llm = new LinearLayoutManager(MainActivity.this);
         recyclerView.setLayoutManager(llm);
-
         setUpList();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
