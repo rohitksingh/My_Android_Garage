@@ -13,6 +13,7 @@ public class AsyncTaskRetainActivity extends AppCompatActivity implements AsyncT
 
     private TextView textView;
     private FragmentManager fragmentManager;
+    private TaskFragment taskFragment;
 
 
     @Override
@@ -23,9 +24,13 @@ public class AsyncTaskRetainActivity extends AppCompatActivity implements AsyncT
         textView = (TextView)findViewById(R.id.retaindText);
 
         fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .add(R.id.fragmentContainer,new TaskFragment())
-                .commit();
+
+        if(savedInstanceState==null) {
+            taskFragment = new TaskFragment();
+            fragmentManager.beginTransaction()
+                    .add(R.id.fragmentContainer, taskFragment)
+                    .commit();
+        }
 
     }
 
