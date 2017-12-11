@@ -25,7 +25,6 @@ public class LocationBoundService extends Service{
     private String currentLoaction;
     private IBinder locationBinder = new LocationBinder();
 
-
     private Location location;
     private double longitude;
     private double latitude;
@@ -39,27 +38,10 @@ public class LocationBoundService extends Service{
     private LocationListener locationListener;
 
 
+    //************************************************************************
+    // Service Callbaclk methods
+    //************************************************************************
 
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) {
-        return locationBinder;
-    }
-
-    @Override
-    public void onRebind(Intent intent) {
-        super.onRebind(intent);
-    }
-
-    @Override
-    public boolean onUnbind(Intent intent) {
-        return true;
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
 
     @Override
     public void onCreate() {
@@ -90,7 +72,29 @@ public class LocationBoundService extends Service{
         };
     }
 
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return locationBinder;
+    }
+    @Override
+    public void onRebind(Intent intent) {
+        super.onRebind(intent);
+    }
 
+    @Override
+    public boolean onUnbind(Intent intent) {
+        return true;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    //************************************************************************
+    // Private Methods
+    //************************************************************************
 
     public String getCurrentLoaction() {
 
@@ -100,7 +104,7 @@ public class LocationBoundService extends Service{
         isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
         if (!isGPSEnabled && !isNetworkEnabled) {
-            Log.d("location", "No network provider is available");
+
         } else {
             canGetLocation = true;
 
@@ -156,9 +160,7 @@ public class LocationBoundService extends Service{
         }
 
         currentLoaction = "Latitude :"+latitude+"\nLongitude :"+longitude;
-
-        Log.d("location",currentLoaction);
-
+        
         return currentLoaction;
     }
 
@@ -171,9 +173,5 @@ public class LocationBoundService extends Service{
         }
 
     }
-
-
-
-
 
 }
