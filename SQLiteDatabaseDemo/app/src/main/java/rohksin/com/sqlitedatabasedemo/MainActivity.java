@@ -30,12 +30,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         databaseHelper = new MyDatabaseHelper(MainActivity.this);
+        setUpUi();
+    }
 
+    //****************************************************************************
+    //    Private Methods
+    //****************************************************************************
+
+    private void setUpUi()
+    {
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         LinearLayoutManager llm = new LinearLayoutManager(MainActivity.this);
         recyclerView.setLayoutManager(llm);
         setUpList();
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,36 +53,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-    public List<People> dummyList()
-    {
-        List<People> people = new ArrayList<People>();
-
-        People rohit = new People();
-        rohit.setFname("Rohit");
-        rohit.setLname("Singh");
-        people.add(rohit);
-
-        return people;
-
-    }
-
-    public List<People> getRealList()
+    private List<People> getRealList()
     {
         return databaseHelper.getPeopleList();
     }
 
-    public void add(People people)
+    private void add(People people)
     {
          databaseHelper.addPeople(people);
     }
 
-    public void delete(People people)
+    private void delete(People people)
     {
 
     }
 
-    public void update(People people)
+    private void update(People people)
     {
 
     }
@@ -123,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
             addButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     People dummy = new People();
                     dummy.setFname("dummyRohit");
                     dummy.setLname("dummySingh");
@@ -132,10 +124,7 @@ public class MainActivity extends AppCompatActivity {
                     dismiss();
                 }
             });
-
-
         }
     }
-
 
 }

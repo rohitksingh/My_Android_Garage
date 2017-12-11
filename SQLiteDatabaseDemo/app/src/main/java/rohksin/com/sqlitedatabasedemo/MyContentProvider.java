@@ -23,15 +23,12 @@ public class MyContentProvider extends ContentProvider {
     public static final String URL = "content://"+PROVIDER_NAME+"/names";
     public static final Uri CONTENT_URI = Uri.parse(URL);
 
-
     static final UriMatcher uriMatcher;
     static {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
         uriMatcher.addURI(PROVIDER_NAME,"names",1);
         uriMatcher.addURI(PROVIDER_NAME,"names/#",2);
     }
-
-
 
 
     @Override

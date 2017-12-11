@@ -25,17 +25,17 @@ public class MyDatabaseHelper extends SQLiteOpenHelper{
     public final static int DATABASE_VERSION = 1;
     private SQLiteDatabase db;
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////                          People Table                               //////////////////
-    //////////////////////////////////////////////////////////////////////////////////////////////////
+    //************************************************************************************************
+    //                         People Table
+    //************************************************************************************************
     public final String TABLE_NAME = "PEOPLE";
     public final String COLUMN_ID = "ID";
     public final String FIRST_NAME = "FIRST_NAME";
     public final String LAST_NAME = "LAST_NAME";
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////                           Raw Queries                               //////////////////
-    //////////////////////////////////////////////////////////////////////////////////////////////////
+    //************************************************************************************************
+    //                          Raw Queries
+    //************************************************************************************************
     private  final String CREATE_TABLE = "create table "+TABLE_NAME +" ( " + COLUMN_ID +" INTEGER PRIMARY KEY AUTOINCREMENT," + FIRST_NAME +" VARCHAR," + LAST_NAME + " VARCHAR );";
     private final String DROP_TABLE = "drop table if exists "+ TABLE_NAME;
 

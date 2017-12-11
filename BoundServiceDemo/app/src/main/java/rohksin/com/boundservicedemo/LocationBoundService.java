@@ -160,7 +160,7 @@ public class LocationBoundService extends Service{
         }
 
         currentLoaction = "Latitude :"+latitude+"\nLongitude :"+longitude;
-        
+
         return currentLoaction;
     }
 

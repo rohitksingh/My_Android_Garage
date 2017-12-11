@@ -31,8 +31,9 @@ public class ContentProviderActivityDemo extends AppCompatActivity{
 
         myCursorTest();       //<-------- getting data from custom contentprovider
 
+        /*   UNCOMMENT TO SEE THE METHOD
 
-        /*
+
         List<Music> musicList = getAllMusicFilesUsingLoaders();
 
         for (int i=0;i<musicList.size();i++)
@@ -41,27 +42,30 @@ public class ContentProviderActivityDemo extends AppCompatActivity{
         }
         */
 
-
     }
 
+
+    //****************************************************************************
+    //    Normal loading from ImageContent provider without CursorLoader
+    //****************************************************************************
 
     public List<Music> getAllMusicFiles()
     {
         Cursor musicCursor = getContentResolver().query(MUSIC_FILE_LOCATION,proj, null, null, null, null);
-
         return loadFromCursor(musicCursor);
-
     }
 
 
+    //****************************************************************************
+    //     Loading using CursorLoader
+    //****************************************************************************
     public List<Music> getAllMusicFilesUsingLoaders()
     {
-
         CursorLoader cursorLoader = new CursorLoader(ContentProviderActivityDemo.this, MUSIC_FILE_LOCATION , proj , null, null,null);
         Cursor musicCursor = cursorLoader.loadInBackground();
-
         return loadFromCursor(musicCursor);
     }
+
 
 
     public List<Music> loadFromCursor(Cursor musicCursor)
@@ -76,11 +80,12 @@ public class ContentProviderActivityDemo extends AppCompatActivity{
             music.setCreatedDate(musicCursor.getString(musicCursor.getColumnIndex(DATE_CREATED)));
             musicFiles.add(music);
         }
-
         return musicFiles;
     }
 
-
+    //****************************************************************************
+    //    Loading from my Custom Content Provider
+    //****************************************************************************
     public void myCursorTest()
     {
         String PROVIDER_NAME = "rohksin.com.sqlitedatabasedemo.NameProvider";
