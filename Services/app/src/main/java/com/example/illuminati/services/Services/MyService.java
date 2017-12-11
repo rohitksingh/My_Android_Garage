@@ -15,7 +15,6 @@ import com.example.illuminati.services.MainActivity;
  */
 public class MyService extends Service {
 
-
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -25,10 +24,7 @@ public class MyService extends Service {
     @Override
     public void onCreate()
     {
-        Log.d("Rohit", "Service Created");
-
         new SendFile().execute();
-
     }
 
 
@@ -45,7 +41,6 @@ public class MyService extends Service {
     }
 
 
-
     private class SendFile extends AsyncTask<Void, Integer, Void> {
 
         Intent intent;
@@ -55,16 +50,15 @@ public class MyService extends Service {
             intent = new Intent(MainActivity.UPDATE_UI);
         }
 
-
         @Override
         public Void doInBackground(Void... Params)
         {
 
             for(int i=0;i<100;i++) {
+
                 intent.putExtra(MainActivity.VALUE_I_NEED,i+"");
 
                 try {
-                    Log.d("Rohit", "in");
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -89,10 +83,7 @@ public class MyService extends Service {
         }
 
 
-
-
     }
-
 
 
 }
