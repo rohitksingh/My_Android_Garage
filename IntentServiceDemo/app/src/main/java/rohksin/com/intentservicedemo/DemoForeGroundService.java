@@ -24,8 +24,7 @@ public class DemoForeGroundService extends IntentService {
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
 
-
-        startForeground(FOREGROUND_ID,getNotification());
+        startForeground(FOREGROUND_ID,getNotification());        //<--------- Makes Service Foreground
 
         int count = 30;
         while (count>0)
@@ -38,16 +37,14 @@ public class DemoForeGroundService extends IntentService {
                 resultIntent.putExtra("CountValue",count);
                 sendBroadcast(resultIntent);
 
-                Log.d("ForeGround Demo","data sending");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
 
-        stopForeground(true);
+        stopForeground(true);                                 // <------------ Makes Service normal again
 
     }
-
 
     public Notification getNotification()
     {
@@ -55,18 +52,15 @@ public class DemoForeGroundService extends IntentService {
         Intent intent = new Intent(this, SecondActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent,0);
 
-
         NotificationCompat.Builder foregroundNotification = new NotificationCompat.Builder(this);
-        foregroundNotification.setOngoing(true);
 
+        foregroundNotification.setOngoing(true);
         foregroundNotification.setContentTitle("MY Foreground Notification")
                 .setContentText("This is the first foreground notification Peace")
                 .setSmallIcon(android.R.drawable.ic_btn_speak_now)
                 .setContentIntent(pendingIntent);
 
-
         return foregroundNotification.build();
     }
-
 
 }

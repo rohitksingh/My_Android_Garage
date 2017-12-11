@@ -19,43 +19,38 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private Button button;
-    private MyBroadCastReceiver receiver;
     private TextView textView;
-    private IntentFilter filter;
-
     private Button secondActivityButton;
     private Button stickyService;
 
+    private MyBroadCastReceiver receiver;
+    private IntentFilter filter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        textView = (TextView)findViewById(R.id.timer);
 
         filter = new IntentFilter();
-        receiver = new MyBroadCastReceiver();
         filter.addAction("TimerService");
+        receiver = new MyBroadCastReceiver();
+        registerReceiver(receiver,filter);                     //<-------- Receiver Registered
 
-        registerReceiver(receiver,filter);
-
+        textView = (TextView)findViewById(R.id.timer);
         button = (Button)findViewById(R.id.button);
+        secondActivityButton = (Button)findViewById(R.id.secondActivity);
+        stickyService = (Button)findViewById(R.id.stickyService);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Log.d("Test","Working");
                 Intent intent = new Intent(MainActivity.this,TimerService.class);
                 startService(intent);
-
 
             }
         });
 
-        secondActivityButton = (Button)findViewById(R.id.secondActivity);
         secondActivityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,45 +58,55 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        stickyService = (Button)findViewById(R.id.stickyService);
         stickyService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("Sticky","On click called");
                 startService(new Intent(MainActivity.this, StickyService.class));
             }
         });
 
-
     }
 
+
+    //**************************************************************************************
+    //  Activity callback methods
+    //**************************************************************************************
 
     @Override
     public void onResume()
     {
         super.onResume();
-        registerReceiver(receiver,filter);
+        registerReceiver(receiver,filter);                                      // For state change eq orientation and pause
     }
 
     @Override
     public void onStop()
     {
         super.onStop();
-        unregisterReceiver(receiver);
+        unregisterReceiver(receiver);                                          // Prevents Memory leak
+    }
+
+    //**************************************************************************************
+    //  Private Methods
+    //**************************************************************************************
+
+    public void setUpUi()
+    {
+
     }
 
 
-    class MyBroadCastReceiver extends BroadcastReceiver{
+    //**************************************************************************************
+    //  BroadcastRecevier
+    //**************************************************************************************
 
+    class MyBroadCastReceiver extends BroadcastReceiver{
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            Log.d("Receiver","Nsg received");
 
             int value = intent.getIntExtra("TimerValue",0);
             textView.setText(value+"");
-
-
         }
     }
 

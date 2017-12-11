@@ -33,6 +33,12 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.second_activity_layout);
 
         textView = (TextView)findViewById(R.id.counter);
+        receiver = new MyReceiver(textView);
+        filter = new IntentFilter();
+        filter.addAction("Foreground");
+        registerReceiver(receiver,filter);                                      ///<----- Receiver Registered
+
+
         button = (Button)findViewById(R.id.button);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -51,12 +57,13 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
-        receiver = new MyReceiver(textView);
-        filter = new IntentFilter();
-        filter.addAction("Foreground");
-        registerReceiver(receiver,filter);
 
     }
+
+
+    //**************************************************************************************
+    //  Activity Lifecycle methods
+    //**************************************************************************************
 
     @Override
     public void onStop()
@@ -73,8 +80,11 @@ public class SecondActivity extends AppCompatActivity {
     }
 
 
-
 }
+
+//**************************************************************************************
+//  BroadcastReceiver
+//**************************************************************************************
 
 
 class MyReceiver extends BroadcastReceiver{
@@ -91,7 +101,6 @@ class MyReceiver extends BroadcastReceiver{
     {
         int value = intent.getIntExtra("CountValue",-1);
         textView.setText(value+"");
-        Log.d("ForeGround Demo","data receiving");
     }
 
 

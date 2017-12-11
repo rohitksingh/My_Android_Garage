@@ -11,8 +11,6 @@ import android.util.Log;
 
 public class TimerService extends IntentService {
 
-
-
     public TimerService() {
         super("TimerService");
     }
@@ -33,7 +31,7 @@ public class TimerService extends IntentService {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            Log.d("TimerService",count+"");
+
         }
 
 

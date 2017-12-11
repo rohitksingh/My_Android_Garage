@@ -24,15 +24,11 @@ public class StickyService extends IntentService {
     public int onStartCommand(Intent intent, int flag, int startId)
     {
         super.onStartCommand(intent,flag,startId);
-         return START_STICKY;
+        return START_STICKY;                                   //<---- It makes service run forever
     }
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
-
-
-
-        Log.d("Sticky","?");
 
         int count = 10;
 
@@ -58,7 +54,6 @@ public class StickyService extends IntentService {
         Intent intentSticky = new Intent(this,ThirdActivity.class);
         intentSticky.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intentSticky);
-
 
     }
 

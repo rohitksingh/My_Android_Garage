@@ -17,11 +17,8 @@ import android.widget.TextView;
 
 public class ThirdActivity extends AppCompatActivity {
 
-
     private TextView currentTimer;
     private Button boundServiceButton;
-
-
     private DemoBoundService demoBoundService;
     private boolean isServiceBound;
 
@@ -49,6 +46,10 @@ public class ThirdActivity extends AppCompatActivity {
     }
 
 
+    //**************************************************************************************
+    //   Activity Lifecycle Methods
+    //**************************************************************************************
+
     @Override
     public void onStart()
     {
@@ -74,6 +75,12 @@ public class ThirdActivity extends AppCompatActivity {
     {
        super.onResume();
     }
+
+    //**************************************************************************************
+    //  ServiceConnection
+    //  Provides Binder Object hence gives access to Bound Service and its methods which
+    //  can be invoked while Service is bound to Activity
+    //**************************************************************************************
 
 
     private ServiceConnection connection = new ServiceConnection() {

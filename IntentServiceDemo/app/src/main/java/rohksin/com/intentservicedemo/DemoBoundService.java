@@ -12,18 +12,17 @@ import android.support.annotation.Nullable;
 
 public class DemoBoundService extends Service {
 
-
     private int currentTimer;
-
     private IBinder binder= new MyBinder();
-
-
 
     @Override
     public void onCreate()
     {
         super.onCreate();
 
+        /*
+            Normal Service runs on UI Thread hence creating a new Thread
+         */
 
         Thread t1 = new Thread(
 
@@ -45,8 +44,6 @@ public class DemoBoundService extends Service {
 
         );
         t1.start();
-
-
 
     }
 
