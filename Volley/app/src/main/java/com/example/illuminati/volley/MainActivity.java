@@ -33,17 +33,24 @@ public class MainActivity extends AppCompatActivity {
     private TextView jsonText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         jsonText=(TextView)findViewById(R.id.JsonText);
+
+        // Singleton Volley Queue
         requestQueue= Volley.newRequestQueue(this);
-        //fetchStringJsonData();
+
+        //fetchStringJsonData();                                        <---- Uncomment to load JsonString request
         fetchArrayJsonData();
     }
 
-    public void fetchStringJsonData()
+
+    //***************************************************************************************************
+    // private methods
+    //***************************************************************************************************
+
+    private void fetchStringJsonData()
     {
         String url="http://api.androidhive.info/volley/person_array.json";
         StringRequest request=new StringRequest(Request.Method.GET, url, new Response.Listener<String>(){
@@ -51,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(String response)
             {
                 jsonText.setText(response);
-               // System.out.println(response);
+
             }
         },
                 new Response.ErrorListener() {
@@ -63,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(request);
     }
 
-    public void fetchArrayJsonData()
+    private void fetchArrayJsonData()
     {
         jsonText.setText("Rohit");
         String url="http://api.androidhive.info/volley/person_array.json";
@@ -72,6 +79,10 @@ public class MainActivity extends AppCompatActivity {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
+
+
+                        //// Manual Parsing
+                        /// Moshi or Gsoncan be used to parse into Model class
 
                         String allData="";
                         for (int i = 0; i < response.length();i++)
@@ -101,32 +112,6 @@ public class MainActivity extends AppCompatActivity {
         );
         requestQueue.add(request);
 
-
-    }
-
-
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
 }
