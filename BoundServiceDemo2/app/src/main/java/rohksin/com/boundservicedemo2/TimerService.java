@@ -40,12 +40,10 @@ public class TimerService extends Service {
         {
             return TimerService.this;
         }
-
     }
 
 
     public void startTimer()  {
-
 
         new Thread(new Runnable() {
             @Override
@@ -66,9 +64,7 @@ public class TimerService extends Service {
             }
         }).start();
 
-
     }
-
 
     public String getTimerValue()
     {
