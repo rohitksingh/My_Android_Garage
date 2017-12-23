@@ -24,6 +24,7 @@
         </activity>
 
         <service android:name=".TimerService"/>
+        <service android:name=".MyLocationService"/>
 
     </application>
 

@@ -30,7 +30,7 @@ public class TimerService extends Service {
     @Override
     public void onCreate()
     {
-        startTimer();
+       // startTimer();
     }
 
 
@@ -59,7 +59,7 @@ public class TimerService extends Service {
                     timerValue = timerValue+1;
                     Intent intent = new Intent("TIMER");
                     intent.putExtra("TIMERVALUE",timerValue+"");
-                    sendBroadcast(intent);
+                     sendBroadcast(intent);
                 }
             }
         }).start();

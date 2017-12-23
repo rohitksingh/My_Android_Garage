@@ -17,6 +17,10 @@ import android.widget.Toast;
 public class LocationUtility {
 
 
+    public static final String LOCATION_CHANGE = "rohksin.com.boundservicedemo2.LOCATION_CHANGE";
+    public static final String CURRENT_LOCATION = "rohksin.com.boundservicedemo2.CURRENT_LOCATION";
+
+
     public static void checkLocationPermission(Context context)
     {
         if(!hasFineLocationPermission(context))
@@ -34,7 +38,8 @@ public class LocationUtility {
 
     private static void requestFineLocationPermission(Context context)
     {
-          if(ActivityCompat.shouldShowRequestPermissionRationale(AppCompatActivity)(context),Manifest.permission.ACCESS_FINE_LOCATION)
+
+          if(ActivityCompat.shouldShowRequestPermissionRationale((AppCompatActivity)context,Manifest.permission.ACCESS_FINE_LOCATION))
           {
               Toast.makeText(context,"Please provide access",Toast.LENGTH_LONG).show();
           }

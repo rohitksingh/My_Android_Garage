@@ -12,7 +12,8 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.LoaderManager;
+import android.util.Log;
+import android.widget.Toast;
 
 /**
  * Created by Illuminati on 12/20/2017.
@@ -32,9 +33,13 @@ public class MyLocationService extends Service implements LocationListener {
     private int LOCATION_UPDATE_DISTANCE = 2;    // inMeters
 
 
+    private String TAG = "location";
+
+
     @Override
     public void onCreate() {
 
+        initLocationManager();
     }
 
 
@@ -47,12 +52,9 @@ public class MyLocationService extends Service implements LocationListener {
 
     @Override
     public boolean onUnbind(Intent intent) {
+
+        locationManager = null;
         return false;
-    }
-
-    @Override
-    public void onLocationChanged(Location location) {
-
     }
 
 
@@ -65,9 +67,23 @@ public class MyLocationService extends Service implements LocationListener {
 
 
     public void initLocationManager() {
+
+
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            Toast.makeText(MyLocationService.this,"Permission is not given",Toast.LENGTH_SHORT).show();
+
+        }
+        else {
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, LOCATION_UPDATE_INTERVAL, LOCATION_UPDATE_DISTANCE, this);
+        }
+
+
     }
+
 
 
     //*************************************************************
@@ -76,17 +92,34 @@ public class MyLocationService extends Service implements LocationListener {
 
 
     @Override
+    public void onLocationChanged(Location location) {
+
+        Log.d(TAG, "Location Changed");
+        Intent locationUpdate = new Intent();
+        locationUpdate.setAction(LocationUtility.LOCATION_CHANGE);
+        locationUpdate.putExtra(LocationUtility.CURRENT_LOCATION,getCurrentLoaction());
+        sendBroadcast(locationUpdate);
+
+    }
+
+
+    @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
+
+        Log.d(TAG,"onStatusChanged");
 
     }
 
     @Override
     public void onProviderEnabled(String provider) {
 
+        Log.d(TAG,"onProviderEnabled");
     }
 
     @Override
     public void onProviderDisabled(String provider) {
+
+        Log.d(TAG,"onStatusDisabled");
 
     }
 
@@ -94,12 +127,28 @@ public class MyLocationService extends Service implements LocationListener {
     // Service public API Methods
     //***************************************************************************
 
-    public String getCurrentLoaction() {
+
+
+    public Location getCurrentLoaction() {
+
         isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
         isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
-        
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, LOCATION_UPDATE_INTERVAL, LOCATION_UPDATE_DISTANCE, this);
+        if(canGiveLoaction(isGPSEnabled,isNetworkEnabled))
+        {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+                Toast.makeText(MyLocationService.this,"Permission is not given",Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+                return locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            }
+        }
+
+        return null;
+    }
+
 
 
     private boolean canGiveLoaction(boolean isGPSEnabled, boolean isNetworkEnabled)
@@ -108,6 +157,9 @@ public class MyLocationService extends Service implements LocationListener {
             return false;
         else return true;
     }
+
+
+
 
 
 }
