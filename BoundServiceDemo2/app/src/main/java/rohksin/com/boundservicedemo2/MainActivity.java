@@ -10,70 +10,50 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Locale;
+
+import rohksin.com.boundservicedemo2.Services.MyLocationService;
+import rohksin.com.boundservicedemo2.Services.TimerService;
+import rohksin.com.boundservicedemo2.Utility.LocationUtility;
 
 public class MainActivity extends AppCompatActivity {
 
 
+    // Timer Service and related
     private TimerService timerService;
     private Intent timerIntent;
     private boolean timerBound = false;
 
 
+    // Location Service and related
     private MyLocationService locationService;
     private Intent locationIntent;
     private boolean locationBound = false;
 
-    private TextView textView;
+
     private String TAG ="LOC";
+    private TextView locationFromGps;
+    private TextView locationFromNetwork;
+    private TextView locationFromPlayService;
+
     private Location currentLocation;
-    private Button openInMap;
 
 
+    //********************************************************************************************
+    //  Activity Callback methods
+    //********************************************************************************************
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textView = (TextView)findViewById(R.id.timerValue);
-        openInMap = (Button)findViewById(R.id.openInMap);
+        locationFromGps = (TextView)findViewById(R.id.locationFromGps);
+        locationFromNetwork = (TextView)findViewById(R.id.locationFromNetwork);
+        locationFromPlayService = (TextView)findViewById(R.id.locationFromPlayService);
 
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Log.d(TAG,"Service null "+(locationService==null));
-
-                textView.setText(locationService.getCurrentLoaction().toString());
-                updateCurrentLocation(locationService.getCurrentLoaction());
-            }
-        });
-
-        openInMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(currentLocation!=null)
-                {
-                    String uri = String.format(Locale.ENGLISH, "geo:%f,%f", currentLocation.getLatitude(), currentLocation.getLongitude());
-                    Intent openMap = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                    startActivity(openMap);
-                }
-            }
-        });
-
-
-        registerReceiver(new ServiceReceivers(),new IntentFilter("TIMER"));
+        registerReceiver(new MyLocationReceiver(),new IntentFilter(LocationUtility.LOCATION_CHANGE));
     }
 
 
@@ -105,6 +85,9 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
+    //********************************************************************************************
+    //  Service Connectors : Provides access to service public API
+    //********************************************************************************************
 
     private ServiceConnection timerserviceConnection = new ServiceConnection() {
 
@@ -140,39 +123,50 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-    public class ServiceReceivers extends BroadcastReceiver{
+    //********************************************************************************************
+    //  BroadCast Receiver : To listen loaction change updates from service
+    //********************************************************************************************
+
+    public class MyLocationReceiver extends BroadcastReceiver{
 
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            Log.d(TAG,"Intent received");
-
             if(intent.getAction().equals(LocationUtility.LOCATION_CHANGE))
             {
 
-                Location location = (Location) intent.getSerializableExtra(LocationUtility.CURRENT_LOCATION);
-                Toast.makeText(MainActivity.this,"New Location",Toast.LENGTH_SHORT).toString();
-                textView.setText(location.getLatitude()+"\n"+location.getLongitude());
-                updateCurrentLocation(location);
+                String fromGps =  intent.getStringExtra(LocationUtility.CURRENT_LOCATION_FROM_GSP);
+                String fromNetwork = intent.getStringExtra(LocationUtility.CURRENT_LOCATION_FROM_NETWORK);
+
+                if(locationFromGps!=null)
+                locationFromGps.setText("GPS: "+fromGps);
+                if(locationFromNetwork!=null)
+                locationFromNetwork.setText("NET: "+fromNetwork);
+
             }
 
+        }
+    }
 
+    class TimerReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent)
+        {
             if(intent.getAction().equals("TIMER"))
             {
-                textView.setText(intent.getStringExtra("TIMERVALUE"));
+                // Handle Timer value
             }
         }
     }
 
 
-    public void updateCurrentLocation(Location location)
+    public void openLocationWithGoogleMap()
     {
-        currentLocation = location;
+        String uri = String.format(Locale.ENGLISH, "geo:%f,%f", currentLocation.getLatitude(), currentLocation.getLongitude());
+        Intent openMap = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+        startActivity(openMap);
     }
-
-
-
-
 
 
 }

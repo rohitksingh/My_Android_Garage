@@ -1,4 +1,4 @@
-package rohksin.com.boundservicedemo2;
+package rohksin.com.boundservicedemo2.Services;
 
 import android.app.Service;
 import android.content.Intent;

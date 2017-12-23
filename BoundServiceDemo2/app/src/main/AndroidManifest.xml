@@ -23,8 +23,8 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".TimerService"/>
-        <service android:name=".MyLocationService"/>
+        <service android:name=".Services.TimerService"/>
+        <service android:name=".Services.MyLocationService"/>
 
     </application>
 
