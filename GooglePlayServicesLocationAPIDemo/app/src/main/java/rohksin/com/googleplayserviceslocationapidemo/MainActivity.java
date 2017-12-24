@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private FusedLocationProviderClient locationProviderClient;
     private TextView locationView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -68,6 +69,12 @@ public class MainActivity extends AppCompatActivity {
                     });
 
         }
+
+    }
+
+
+    public void requestUpdates()
+    {
 
     }
 
