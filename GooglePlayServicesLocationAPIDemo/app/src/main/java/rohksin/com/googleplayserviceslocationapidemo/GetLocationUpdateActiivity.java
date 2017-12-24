@@ -43,27 +43,19 @@ public class GetLocationUpdateActiivity extends AppCompatActivity {
 
     private String TAG = "UPDATES";
 
+    //******************************************************************************************
+    // Activity callback Methods
+    //******************************************************************************************
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_main);
         currentLocation = (TextView) findViewById(R.id.location);
 
-        locationCallback = new LocationCallback() {
-            @Override
-            public void onLocationResult(LocationResult locationResult) {
-
-                for (Location location : locationResult.getLocations()) {
-
-                    Log.d(TAG,"Current loc "+location.toString());
-                }
-            }
-
-            ;
-        };
-
+        setLocationCallback();
         createLocationRequest();
-        ckeckWithSystemSetting();
+        checkWithSystemSetting();
 
     }
 
@@ -84,25 +76,51 @@ public class GetLocationUpdateActiivity extends AppCompatActivity {
         super.onPause();
         stopLocationUpdate();
     }
-    */
-
 
     public void stopLocationUpdate()
     {
         locationProviderClient.removeLocationUpdates(locationCallback);
     }
 
+    */
 
-    public void createLocationRequest() {
+
+    //******************************************************************************************
+    // Helper mrthods
+    //******************************************************************************************
+
+
+    //     Setting up locationCallBack
+
+    private void setLocationCallback()
+    {
+        locationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(LocationResult locationResult) {
+
+                for (Location location : locationResult.getLocations()) {
+
+                    Log.d(TAG,"Current loc "+location.toString());
+                }
+            }
+
+        };
+    }
+
+    //     Location Request to tell Location provider when and what kind of accuracy is requested
+
+    private void createLocationRequest() {
         locationRequest = new LocationRequest();
-        locationRequest.setInterval(2000);                      // prefer to get location update in every 10 secs
-        locationRequest.setFastestInterval(2000);
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        locationRequest.setInterval(2000);                                       // prefer to get location update in every 2 secs
+        locationRequest.setFastestInterval(2000);                                // can handle at updates at the max rate of 2 sec interval
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);     // High accuracy
         locationRequestList = new ArrayList<LocationRequest>();
         locationRequestList.add(locationRequest);
     }
 
-    public void requstLocationUpdates() {
+    // Starting location updates
+
+    private void requstLocationUpdates() {
         locationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
            Log.d(TAG,"Permission not given");
@@ -111,7 +129,9 @@ public class GetLocationUpdateActiivity extends AppCompatActivity {
     }
 
 
-    public void ckeckWithSystemSetting()
+    // Check whether System location setting satisfies the location request/s
+
+    private void checkWithSystemSetting()
     {
         LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
                 .addAllLocationRequests(locationRequestList);
