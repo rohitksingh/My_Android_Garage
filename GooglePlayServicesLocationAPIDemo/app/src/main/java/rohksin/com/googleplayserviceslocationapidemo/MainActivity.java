@@ -1,6 +1,10 @@
 package rohksin.com.googleplayserviceslocationapidemo;
 
 import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -30,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private Location currentLocation;
     private FusedLocationProviderClient locationProviderClient;
     private TextView locationView;
+    private TextView streetAddress;
 
 
     @Override
@@ -40,18 +45,22 @@ public class MainActivity extends AppCompatActivity {
         locationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         locationView = (TextView)findViewById(R.id.location);
+        streetAddress = (TextView)findViewById(R.id.streetAddress);
+
+        registerReceiver(new GeoAddressReceiver(),new IntentFilter(Constants.RECEIVE_STREET_ADDRESS));
 
         locationView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getCurrentLoaction();
+                getCurrentLocation();
             }
         });
 
 
     }
 
-    public void getCurrentLoaction() {
+    public void getCurrentLocation() {
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(this,"Permisson not given", Toast.LENGTH_SHORT).show();
         }
@@ -65,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
                             currentLocation = location;
                             Log.d("LOcation",currentLocation.toString());
                             locationView.setText(currentLocation.toString());
+
+                            getStreetAddress(currentLocation);
                         }
                     });
 
@@ -73,9 +84,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void requestUpdates()
-    {
 
+
+   ///           Calling Geo coding service to get Address fom location coordinates
+
+    public void getStreetAddress(Location location)
+    {
+        Intent getAddressIntent = new Intent(MainActivity.this, GeoCodingService.class);
+        getAddressIntent.putExtra(Constants.LOCATION_COORDINATES,location);
+        startService(getAddressIntent);
     }
+
+
+    private class GeoAddressReceiver extends BroadcastReceiver{
+
+        @Override
+        public void onReceive(Context context, Intent intent)
+        {
+            String geoCodedAddress = intent.getStringExtra(Constants.LOCATION_COORDINATES);
+            streetAddress.setText(geoCodedAddress);
+        }
+    }
+
 
 }
