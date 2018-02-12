@@ -19,16 +19,22 @@ public class PhotoListActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private PhotoAdapter adapter;
 
+    private PhotoDatabase photoDatabase;
+
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.photo_list_activity);
 
+        initDataBase();
+
         rv = (RecyclerView)findViewById(R.id.rv);
-        layoutManager = new GridLayoutManager(this,2);
+        //layoutManager = new GridLayoutManager(this,2);
+        layoutManager = new LinearLayoutManager(this);
         rv.setLayoutManager(layoutManager);
-        adapter = new PhotoAdapter(this, getDummyList());
+        //adapter = new PhotoAdapter(this, getSavedLinks());
+        LinkAdapter adapter = new LinkAdapter(this, getSavedLinks());
         rv.setAdapter(adapter);
 
         //PhotoUtility.getImages(this);
@@ -51,6 +57,26 @@ public class PhotoListActivity extends AppCompatActivity {
 
         return list;
 
+    }
+
+
+    public List<PhotoData> getSavedLinks()
+    {
+        List<PhotoData> savedLinks = photoDatabase.getHistoryList();
+
+        if(savedLinks== null)
+        {
+            return getDummyList();
+        }
+        else {
+            return savedLinks;
+        }
+
+    }
+
+    private void initDataBase()
+    {
+        photoDatabase = new PhotoDatabase(this);
     }
 
 

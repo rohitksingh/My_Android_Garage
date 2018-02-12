@@ -2,6 +2,7 @@ package rohksin.com.photohider;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -47,6 +48,15 @@ public class PhotoUtility {
         photoCursor.close();
 
         return null;
+    }
+
+
+    public static void openLinkInBrowser(Context context, String link)
+    {
+        Intent i = new Intent();
+        i.setAction(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(link));
+        context.startActivity(i);
     }
 
 
