@@ -2,11 +2,14 @@ package rohksin.com.photohider;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -39,7 +42,11 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoHolder>
     public void onBindViewHolder(PhotoHolder holder, int position) {
 
         PhotoData data = list.get(position);
-        holder.image.setImageResource(android.R.drawable.btn_star);
+        //holder.image.setImageResource(android.R.drawable.btn_star);
+        Log.d("ImageName",data.getPath());
+        Picasso.with(context)
+                .load(data.getPath())
+                .into(holder.image);
 
     }
 

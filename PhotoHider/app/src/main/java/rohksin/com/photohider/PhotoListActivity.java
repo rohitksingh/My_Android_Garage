@@ -30,11 +30,11 @@ public class PhotoListActivity extends AppCompatActivity {
         initDataBase();
 
         rv = (RecyclerView)findViewById(R.id.rv);
-        //layoutManager = new GridLayoutManager(this,2);
-        layoutManager = new LinearLayoutManager(this);
+        layoutManager = new GridLayoutManager(this,2);
+        //layoutManager = new LinearLayoutManager(this);
         rv.setLayoutManager(layoutManager);
-        //adapter = new PhotoAdapter(this, getSavedLinks());
-        LinkAdapter adapter = new LinkAdapter(this, getSavedLinks());
+        adapter = new PhotoAdapter(this, getSavedLinks());
+        //LinkAdapter adapter = new LinkAdapter(this, getSavedLinks());
         rv.setAdapter(adapter);
 
         //PhotoUtility.getImages(this);
