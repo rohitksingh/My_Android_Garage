@@ -1,5 +1,4 @@
 <h1 align="center">My Android Garage </h1> 
- 
  <h3 align="center">(Don't feel shy to star this repository to show your support for this project)</h3>
  
 ![android-mobile-application-development](https://user-images.githubusercontent.com/11274840/30295615-0e67cd96-96f6-11e7-8e50-e5117446d766.png)             
@@ -28,6 +27,7 @@ The repository contains following **code samples currently**(More to come).
 - [Decorate your text with Custom font (.ttf)](https://github.com/rohitksingh/My_Android_Garage/tree/master/UI_Stuff/Themes)
 - [RecyclerView Demo](https://github.com/rohitksingh/My_Android_Garage/tree/master/UI_Stuff/RecyclerView)
 - [TabLayout with fragments using inheritance](https://github.com/rohitksingh/My_Android_Garage/tree/master/UI_Stuff/GooglePlayTabLayout)
+---
 
 ## [Getting started with Android Services: IntentService + Foreground  Services + Bound Services + Sticky Services](https://github.com/rohitksingh/My_Android_Garage/tree/master/IntentServiceDemo)
 ![mediaplayer-service](https://user-images.githubusercontent.com/11274840/32488276-1cc4e2a8-c3d2-11e7-923a-9920836e54a1.png)
@@ -46,6 +46,7 @@ The repository contains following **code samples currently**(More to come).
 ![4564android-custom-fonts](https://user-images.githubusercontent.com/11274840/30446253-6ce568a8-993d-11e7-82db-97fd7ca6bdf7.jpg)
 
 </br></br>
+
 ## About author
 <p align="center">This Repository is developed and maintained by </p>
 <p align="center">
