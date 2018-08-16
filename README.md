@@ -61,27 +61,6 @@ The repository contains following **code samples currently**(More to come).
 ---
 
 
-
-
-
-
-
-## [Getting started with Android Services: IntentService + Foreground  Services + Bound Services + Sticky Services](https://github.com/rohitksingh/My_Android_Garage/tree/master/IntentServiceDemo)
-![mediaplayer-service](https://user-images.githubusercontent.com/11274840/32488276-1cc4e2a8-c3d2-11e7-923a-9920836e54a1.png)
-
-## [Schedule tasks with AlarmManager and JobScheduler](https://github.com/rohitksingh/My_Android_Garage/blob/master/JobSchedulerDemo/README.md)
-![time](https://user-images.githubusercontent.com/11274840/32495496-e09097cc-c3eb-11e7-80a3-45a13ee16e95.jpg)
-
-## [Read More on Reveal Animation](https://github.com/rohitksingh/My_Android_Garage/blob/master/Transition/READ.md)
-![687474703a2f2f692e696d6775722e636f6d2f5a4e6c344642322e676966](https://user-images.githubusercontent.com/11274840/30338466-a2801128-97a0-11e7-988d-137ca0557a1c.gif)
-
-## [Read More on Moshi Library](https://medium.com/@r4rohit002/parse-json-with-moshi-873d0ff6af9b)![1-esg1tgfdfx73ejudv08okg](https://user-images.githubusercontent.com/11274840/31598237-1dc01a84-b26a-11e7-8f4e-d9b46957ce71.png)
-
-## [Read More on BroadCastReceiver](https://github.com/rohitksingh/My_Android_Garage/blob/master/BroadcastReceiver/READ.md)
-
-## [Read More on Custom Fonts](https://github.com/rohitksingh/My_Android_Garage/blob/master/UI_Stuff/Themes/READ.md)
-![4564android-custom-fonts](https://user-images.githubusercontent.com/11274840/30446253-6ce568a8-993d-11e7-82db-97fd7ca6bdf7.jpg)
-
 </br></br>
 
 ## About author
