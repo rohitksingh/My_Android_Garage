@@ -1,5 +1,5 @@
 <h1 align="center">Write your first BroadcastReceiver</h1>
-<p align="center"><img width ="500" height="350" src="https://i.stack.imgur.com/bK1l0.jpg"></p>
+<p align="center"><img height="350" src="https://i.stack.imgur.com/bK1l0.jpg"></p>
 
 
 You have to take care of **4** things
