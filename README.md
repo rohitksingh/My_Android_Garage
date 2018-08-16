@@ -40,7 +40,7 @@ The repository contains following **code samples currently**(More to come).
 
 ---
 <h1 align="center">Read More on Reveal Animation</h1>
-<p align="center"><img width ="800" height="350" src="https://user-images.githubusercontent.com/11274840/30338466-a2801128-97a0-11e7-988d-137ca0557a1c.gif"></p>
+<p align="center"><img height="350" src="https://user-images.githubusercontent.com/11274840/30338466-a2801128-97a0-11e7-988d-137ca0557a1c.gif"></p>
 <a href="https://github.com/rohitksingh/My_Android_Garage/blob/master/Transition/READ.md"><p align="center">See project</p></a>
 
 ---
@@ -55,7 +55,7 @@ The repository contains following **code samples currently**(More to come).
 
 ---
 <h1 align="center">Read More on BroadCastReceiver</h1>
-<p align="center"><img width ="800" height="350" src="https://user-images.githubusercontent.com/11274840/30338466-a2801128-97a0-11e7-988d-137ca0557a1c.gif"></p>
+<p align="center"><img height="350" src="https://i.stack.imgur.com/bK1l0.jpg"></p>
 <a href="https://github.com/rohitksingh/My_Android_Garage/blob/master/BroadcastReceiver/READ.md"><p align="center">See project</p></a>
 
 ---
