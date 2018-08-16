@@ -45,7 +45,7 @@ The repository contains following **code samples currently**(More to come).
 
 ---
 <h1 align="center">Read More on Moshi Library</h1>
-<p align="center"><img width ="800" height="350" src="https://user-images.githubusercontent.com/11274840/31598237-1dc01a84-b26a-11e7-8f4e-d9b46957ce71.png"></p>
+<p align="center"><img height="350" src="https://user-images.githubusercontent.com/11274840/31598237-1dc01a84-b26a-11e7-8f4e-d9b46957ce71.png"></p>
 <a href="https://medium.com/@r4rohit002/parse-json-with-moshi-873d0ff6af9b"><p align="center">See project</p></a>
 
 ---
