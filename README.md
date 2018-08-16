@@ -29,6 +29,43 @@ The repository contains following **code samples currently**(More to come).
 - [TabLayout with fragments using inheritance](https://github.com/rohitksingh/My_Android_Garage/tree/master/UI_Stuff/GooglePlayTabLayout)
 ---
 
+<h1 align="center">Getting started with Android Services: IntentService + Foreground  Services + Bound Services + Sticky Services</h1>
+<p align="center"><img width ="800" height="350" src="https://user-images.githubusercontent.com/11274840/32488276-1cc4e2a8-c3d2-11e7-923a-9920836e54a1.png"></p>
+<a href="https://github.com/rohitksingh/My_Android_Garage/tree/master/IntentServiceDemo"><p align="center">See project</p></a>
+
+---
+<h1 align="center">Schedule tasks with AlarmManager and JobScheduler</h1>
+<p align="center"><img width ="800" height="350" src="https://user-images.githubusercontent.com/11274840/32495496-e09097cc-c3eb-11e7-80a3-45a13ee16e95.jpg"></p>
+<a href="https://github.com/rohitksingh/My_Android_Garage/blob/master/JobSchedulerDemo/README.md"><p align="center">See project</p></a>
+
+---
+<h1 align="center">Read More on Reveal Animation</h1>
+<p align="center"><img width ="800" height="350" src="https://user-images.githubusercontent.com/11274840/30338466-a2801128-97a0-11e7-988d-137ca0557a1c.gif"></p>
+<a href="https://github.com/rohitksingh/My_Android_Garage/blob/master/Transition/READ.md"><p align="center">See project</p></a>
+
+---
+<h1 align="center">Read More on Moshi Library</h1>
+<p align="center"><img width ="800" height="350" src="https://user-images.githubusercontent.com/11274840/31598237-1dc01a84-b26a-11e7-8f4e-d9b46957ce71.png"></p>
+<a href="https://medium.com/@r4rohit002/parse-json-with-moshi-873d0ff6af9b"><p align="center">See project</p></a>
+
+---
+<h1 align="center">Read More on Custom Fonts</h1>
+<p align="center"><img width ="800" height="350" src="https://user-images.githubusercontent.com/11274840/30446253-6ce568a8-993d-11e7-82db-97fd7ca6bdf7.jpg"></p>
+<a href="https://github.com/rohitksingh/My_Android_Garage/blob/master/UI_Stuff/Themes/READ.md"><p align="center">See project</p></a>
+
+---
+<h1 align="center">Read More on BroadCastReceiver</h1>
+<p align="center"><img width ="800" height="350" src="https://user-images.githubusercontent.com/11274840/30338466-a2801128-97a0-11e7-988d-137ca0557a1c.gif"></p>
+<a href="https://github.com/rohitksingh/My_Android_Garage/blob/master/BroadcastReceiver/READ.md"><p align="center">See project</p></a>
+
+---
+
+
+
+
+
+
+
 ## [Getting started with Android Services: IntentService + Foreground  Services + Bound Services + Sticky Services](https://github.com/rohitksingh/My_Android_Garage/tree/master/IntentServiceDemo)
 ![mediaplayer-service](https://user-images.githubusercontent.com/11274840/32488276-1cc4e2a8-c3d2-11e7-923a-9920836e54a1.png)
 
