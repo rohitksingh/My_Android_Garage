@@ -6,12 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:gravity="center"
+    android:orientation="vertical"
     >
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Activity State Retain Orientation Demo"
+        android:layout_margin="5dp"
+        />
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Data between Activity"
+        android:layout_margin="5dp"
         />
 
 </LinearLayout>
