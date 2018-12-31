@@ -16,13 +16,26 @@ public class FirstActivity extends AppCompatActivity implements NextButtonListen
 
     private FragmentManager fragmentManager;
 
+    private Fragment userFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_activity);
         fragmentManager = getSupportFragmentManager();
-        addUserValidationFragment();
+       // addUserValidationFragment();
+
+        if(savedInstanceState==null) {
+
+            userFragment = UserNameFragment.newInstance();
+            fragmentManager.beginTransaction().add(R.id.profile, userFragment, "TAG").commit();
+        }
+        else {
+            userFragment = fragmentManager.findFragmentByTag("TAG");
+        }
+
+
 
     }
 
