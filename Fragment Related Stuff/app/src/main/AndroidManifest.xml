@@ -19,6 +19,7 @@
         <activity android:name=".Activities.FirstActivity"/>
         <activity android:name=".Activities.SecondActivity"/>
         <activity android:name=".Activities.DialogActivity"/>
+        <activity android:name=".Activities.ThirdActivity"/>
     </application>
 
 </manifest>
