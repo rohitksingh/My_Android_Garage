@@ -1,8 +1,7 @@
-package rohitksingh.com.fragmentrelatedstuff.Dialogs;
+package rohitksingh.com.fragmentrelatedstuff.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

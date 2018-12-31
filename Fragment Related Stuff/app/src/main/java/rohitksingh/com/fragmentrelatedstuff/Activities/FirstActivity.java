@@ -15,7 +15,6 @@ public class FirstActivity extends AppCompatActivity implements NextButtonListen
 
 
     private FragmentManager fragmentManager;
-
     private Fragment userFragment;
 
     @Override
@@ -24,7 +23,6 @@ public class FirstActivity extends AppCompatActivity implements NextButtonListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_activity);
         fragmentManager = getSupportFragmentManager();
-       // addUserValidationFragment();
 
         if(savedInstanceState==null) {
 
@@ -35,11 +33,12 @@ public class FirstActivity extends AppCompatActivity implements NextButtonListen
             userFragment = fragmentManager.findFragmentByTag("TAG");
         }
 
-
-
     }
 
 
+    /******************************************************************
+     *   Listener
+     ******************************************************************/
 
     @Override
     public void nextButtonClicked(String username) {
@@ -49,6 +48,9 @@ public class FirstActivity extends AppCompatActivity implements NextButtonListen
 
     }
 
+    /******************************************************************
+     *   Private Methods
+     ******************************************************************/
 
     private void addUserValidationFragment()
     {

@@ -43,16 +43,22 @@ public class DialogActivity extends AppCompatActivity implements NextButtonListe
             }
         });
 
-
-
-
     }
 
+
+    /******************************************************************
+     *    Listener
+     ******************************************************************/
 
     @Override
     public void nextButtonClicked(String username) {
         Toast.makeText(DialogActivity.this,username, Toast.LENGTH_SHORT).show();
     }
+
+
+    /******************************************************************
+     *    PRIVATE METHODS
+     ******************************************************************/
 
     private void showSimppleDialog()
     {

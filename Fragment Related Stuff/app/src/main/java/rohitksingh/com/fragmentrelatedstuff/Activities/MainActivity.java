@@ -8,6 +8,10 @@ import rohitksingh.com.fragmentrelatedstuff.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    /******************************************************************
+     *  This is the main Activity
+     *  Change Target Activity to see other demo
+     ******************************************************************/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
