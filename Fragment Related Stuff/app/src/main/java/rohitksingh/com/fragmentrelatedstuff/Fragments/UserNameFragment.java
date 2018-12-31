@@ -1,13 +1,17 @@
-package rohitksingh.com.fragmentrelatedstuff;
+package rohitksingh.com.fragmentrelatedstuff.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+
+import rohitksingh.com.fragmentrelatedstuff.NextButtonListener;
+import rohitksingh.com.fragmentrelatedstuff.R;
 
 public class UserNameFragment extends Fragment {
 
@@ -48,11 +52,38 @@ public class UserNameFragment extends Fragment {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.nextButtonClicked();
+                listener.nextButtonClicked(username.getText().toString());
             }
         });
 
+        Log.d("Orientation", "onCreateView");
+
         return view;
+    }
+
+    // Saving state while orientation change
+
+    @Override
+    public void onSaveInstanceState(Bundle outState)
+    {
+        super.onSaveInstanceState(outState);
+        outState.putString("USER_NAME",username.getText().toString());
+        outState.putString("PASSWORD",password.getText().toString());
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        if(savedInstanceState!=null)
+        {
+            String usern= savedInstanceState.getString("USER_NAME");
+
+            Log.d("Orientation", usern);
+            username.setText("Billa");
+            username.setText(savedInstanceState.getString("USER_NAME"));
+            password.setText(savedInstanceState.getString("PASSWORD"));
+        }
     }
 
 }
