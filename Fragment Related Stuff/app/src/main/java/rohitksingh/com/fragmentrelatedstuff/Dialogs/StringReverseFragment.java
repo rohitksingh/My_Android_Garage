@@ -2,6 +2,7 @@ package rohitksingh.com.fragmentrelatedstuff.Dialogs;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,13 +46,43 @@ public class StringReverseFragment extends Fragment {
             }
         });
 
+
+        // Getting back the stored data
+        if(savedInstanceState!=null)
+        {
+            textView.setText(savedInstanceState.getString("REVERSE_STRING_KEY"));
+        }
+
         return view;
     }
 
 
+    /************************************
+     *    Saving State
+     ***********************************/
+
+    @Override
+    public void onSaveInstanceState(Bundle outState)
+    {
+        outState.putString("REVERSE_STRING_KEY",textView.getText().toString());
+    }
+
+
+    /*************************************
+     *   Fragment related methods
+     ************************************/
+
     public void reverse()
     {
-        message = message.toUpperCase();
+        int length = message.length();
+        char[] reverseString = new char[length];
+
+        for(int i = 0;i<length;i++)
+        {
+            reverseString[i] = message.charAt(length-1-i);
+        }
+
+        message = new String(reverseString);
         textView.setText(message);
     }
 

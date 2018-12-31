@@ -21,7 +21,6 @@ public class ThirdActivity extends AppCompatActivity {
      *******************************************************/
 
     private Button button1;
-    private Button button2;
 
     private FragmentManager fragmentManager;
     private StringReverseFragment stringReverseFragment;
@@ -35,10 +34,17 @@ public class ThirdActivity extends AppCompatActivity {
         button1 = (Button)findViewById(R.id.leftButton);
 
         fragmentManager = getSupportFragmentManager();
-        stringReverseFragment = StringReverseFragment.getInstance("Random String");
-        fragmentManager.beginTransaction()
-                .add(R.id.placeholder,stringReverseFragment,"FRAGMENT_TAG")
-                .commit();
+
+
+        if(savedInstanceState==null) {
+
+            stringReverseFragment = StringReverseFragment.getInstance("Random String");
+            fragmentManager.beginTransaction()
+                    .add(R.id.placeholder, stringReverseFragment, "FRAGMENT_TAG")
+                    .commit();
+        }else {
+            stringReverseFragment = (StringReverseFragment) fragmentManager.findFragmentByTag("FRAGMENT_TAG");
+        }
 
 
     }
