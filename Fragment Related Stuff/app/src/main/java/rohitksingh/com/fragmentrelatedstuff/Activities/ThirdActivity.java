@@ -46,6 +46,12 @@ public class ThirdActivity extends AppCompatActivity {
             stringReverseFragment = (StringReverseFragment) fragmentManager.findFragmentByTag("FRAGMENT_TAG");
         }
 
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stringReverseFragment.reverse();
+            }
+        });
 
     }
 
