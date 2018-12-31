@@ -2,5 +2,5 @@ package rohitksingh.com.fragmentrelatedstuff;
 
 public interface NextButtonListener {
 
-    public void nextButtonClicked(String nusername);
+    public void nextButtonClicked(String username);
 }
