@@ -30,6 +30,7 @@ public class ValidationDialog extends Dialog {
     {
         super.onCreate(savedInstaceState);
         setContentView(R.layout.user_name_fragment);
+
         button = (Button)findViewById(R.id.confirmButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
