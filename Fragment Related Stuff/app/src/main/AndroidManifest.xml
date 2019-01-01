@@ -20,6 +20,7 @@
         <activity android:name=".Activities.SecondActivity"/>
         <activity android:name=".Activities.DialogActivity"/>
         <activity android:name=".Activities.ThirdActivity"/>
+        <activity android:name=".Activities.FragmentCommunicationActivity"/>
     </application>
 
 </manifest>

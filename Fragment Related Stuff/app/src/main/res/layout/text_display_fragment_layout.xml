@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment1"
+    android:layout_width="200dp"
+    android:layout_height="200dp"
+    android:layout_centerInParent="true"
+    android:layout_margin="10dp"
+    android:background="@android:color/holo_red_dark"
+    >
+    <TextView
+        android:id="@+id/counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="0"
+        android:textStyle="bold"
+        android:textSize="40sp"
+        android:textColor="#ffffff"
+        />
+</RelativeLayout>

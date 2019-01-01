@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:layout_alignParentBottom="true"
+    android:background="@android:color/holo_purple"
+    android:layout_margin="10dp"
+    >
+    <Button
+        android:id="@+id/minusButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="minus"
+        android:background="@android:color/holo_orange_light"
+        android:textColor="#ffffff"
+        android:layout_margin="5dp"
+        />
+    <Button
+        android:id="@+id/plusButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PLUS"
+        android:background="@android:color/holo_orange_light"
+        android:textColor="#ffffff"
+        android:layout_margin="5dp"
+        />
+</LinearLayout>
