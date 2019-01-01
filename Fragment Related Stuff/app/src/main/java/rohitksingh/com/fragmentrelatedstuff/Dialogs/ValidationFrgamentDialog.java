@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import rohitksingh.com.fragmentrelatedstuff.NextButtonListener;
+import rohitksingh.com.fragmentrelatedstuff.Listener.NextButtonListener;
 import rohitksingh.com.fragmentrelatedstuff.R;
 
 public class ValidationFrgamentDialog extends DialogFragment {

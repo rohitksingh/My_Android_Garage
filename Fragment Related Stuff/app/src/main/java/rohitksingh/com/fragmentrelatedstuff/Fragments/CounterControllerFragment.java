@@ -1,5 +1,6 @@
 package rohitksingh.com.fragmentrelatedstuff.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -7,12 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import rohitksingh.com.fragmentrelatedstuff.Listener.ContollerListerner;
 import rohitksingh.com.fragmentrelatedstuff.R;
 
 public class CounterControllerFragment extends Fragment{
 
     private Button plus;
     private Button minus;
+    private ContollerListerner listerner;
 
 
     public static CounterControllerFragment getInstance()
@@ -28,8 +31,27 @@ public class CounterControllerFragment extends Fragment{
         plus = (Button)view.findViewById(R.id.plusButton);
         minus = (Button)view.findViewById(R.id.minusButton);
 
+        plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listerner.leftButtonClicked();
+            }
+        });
+        minus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listerner.rightButtonClicked();
+            }
+        });
+
         return view;
     }
 
+    @Override
+    public void onAttach(Context context)
+    {
+        super.onAttach(context);
+        listerner = (ContollerListerner)context;
+    }
 
 }

@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.Button;
 
-import rohitksingh.com.fragmentrelatedstuff.NextButtonListener;
+import rohitksingh.com.fragmentrelatedstuff.Listener.NextButtonListener;
 import rohitksingh.com.fragmentrelatedstuff.R;
 
 public class ValidationDialog extends Dialog {

@@ -13,6 +13,7 @@ public class TextDisplayFragment extends Fragment {
 
 
     private TextView textView;
+    private int counter;
 
     public static TextDisplayFragment getInstance()
     {
@@ -25,12 +26,31 @@ public class TextDisplayFragment extends Fragment {
     {
         View view = inflater.inflate(R.layout.text_display_fragment_layout,parent,false);
         textView = (TextView)view.findViewById(R.id.counter);
+        if(savedInstanceState!=null)
+        {
+            counter = savedInstanceState.getInt("COUNTER_VALUE");
+        }
+        textView.setText(counter+"");
         return view;
     }
 
-    public void displayText(int index)
+    @Override
+    public void onSaveInstanceState(Bundle outState)
     {
-        textView.setText(index);
+        outState.putInt("COUNTER_VALUE",counter);
+    }
+
+
+    public void increment()
+    {
+        counter = counter+1;
+        textView.setText(counter+"");
+    }
+
+    public void decrement()
+    {
+        counter = counter-1;
+        textView.setText(counter+"");
     }
 
 }

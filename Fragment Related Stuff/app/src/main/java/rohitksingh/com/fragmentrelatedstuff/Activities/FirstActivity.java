@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import rohitksingh.com.fragmentrelatedstuff.Fragments.UserNameFragment;
 import rohitksingh.com.fragmentrelatedstuff.Fragments.WelcomeUserFragment;
-import rohitksingh.com.fragmentrelatedstuff.NextButtonListener;
+import rohitksingh.com.fragmentrelatedstuff.Listener.NextButtonListener;
 import rohitksingh.com.fragmentrelatedstuff.R;
 
 public class FirstActivity extends AppCompatActivity implements NextButtonListener {

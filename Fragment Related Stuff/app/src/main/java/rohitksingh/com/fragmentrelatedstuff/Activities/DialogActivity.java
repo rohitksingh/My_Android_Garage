@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import rohitksingh.com.fragmentrelatedstuff.Dialogs.ValidationDialog;
 import rohitksingh.com.fragmentrelatedstuff.Dialogs.ValidationFrgamentDialog;
-import rohitksingh.com.fragmentrelatedstuff.NextButtonListener;
+import rohitksingh.com.fragmentrelatedstuff.Listener.NextButtonListener;
 import rohitksingh.com.fragmentrelatedstuff.R;
 
 public class DialogActivity extends AppCompatActivity implements NextButtonListener {

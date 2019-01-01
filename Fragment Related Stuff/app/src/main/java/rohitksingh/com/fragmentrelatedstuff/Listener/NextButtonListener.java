@@ -1,4 +1,4 @@
-package rohitksingh.com.fragmentrelatedstuff;
+package rohitksingh.com.fragmentrelatedstuff.Listener;
 
 public interface NextButtonListener {
 
