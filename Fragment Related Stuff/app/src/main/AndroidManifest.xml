@@ -21,6 +21,7 @@
         <activity android:name=".Activities.DialogActivity"/>
         <activity android:name=".Activities.ThirdActivity"/>
         <activity android:name=".Activities.FragmentCommunicationActivity"/>
+        <activity android:name=".Activities.InheritanceFragmentActivity"/>
     </application>
 
 </manifest>
