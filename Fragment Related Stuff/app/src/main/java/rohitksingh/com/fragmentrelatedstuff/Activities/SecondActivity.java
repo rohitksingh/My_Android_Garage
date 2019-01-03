@@ -24,7 +24,7 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_activity);
         manager = getSupportFragmentManager();
-        Fragment fragment = WelcomeUserFragment.newInstance("This demo showcases callback methods");
+        Fragment fragment = WelcomeUserFragment.getInstance("This demo showcases callback methods");
         manager.beginTransaction().add(R.id.profile,fragment).commit();
 
     }

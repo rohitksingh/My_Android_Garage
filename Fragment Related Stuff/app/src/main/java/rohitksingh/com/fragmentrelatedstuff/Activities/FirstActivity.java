@@ -60,7 +60,7 @@ public class FirstActivity extends AppCompatActivity implements NextButtonListen
 
     private void addWelcomeFragment(String username)
     {
-        Fragment fragment = WelcomeUserFragment.newInstance("Welcome "+username);
+        Fragment fragment = WelcomeUserFragment.getInstance("Welcome "+username);
         fragmentManager.beginTransaction().replace(R.id.profile,fragment).commit();
     }
 

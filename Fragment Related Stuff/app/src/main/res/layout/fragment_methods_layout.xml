@@ -13,6 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
         >
         <Button
             android:id="@+id/add"
@@ -24,19 +25,19 @@
             android:id="@+id/replace"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add"
+            android:text="Replace"
             />
         <Button
             android:id="@+id/remove"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add"
+            android:text="Remove"
             />
         <Button
             android:id="@+id/removeAll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add"
+            android:text="Add to stack"
             />
     </LinearLayout>
 </RelativeLayout>
