@@ -14,7 +14,13 @@ import rohitksingh.com.fragmentrelatedstuff.R;
 public class WelcomeUserFragment extends Fragment {
 
     private TextView message;
-    private static String fragmentMessage;
+    private String fragmentMessage;
+
+
+    /*
+    This is the wrong way to set class variable
+
+    private static String fragmentMessage;  //    <----- Should not keep it as a static variable else it will be same for all objects
 
 
     public static WelcomeUserFragment newInstance(String msg)
@@ -26,9 +32,34 @@ public class WelcomeUserFragment extends Fragment {
         return fragment;
     }
 
+/*
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle bundle)
+    {
+        Log.d("Callback","onCreateView");
+        View view = inflater.inflate(R.layout.welcome_user_fragment,parent,false);
+        message = (TextView)view.findViewById(R.id.message);
+        setMessage(fragmentMessage);
+        return view;
+    }
+
+    */
+
+
+    public static WelcomeUserFragment getInstance(String msg)
+    {
+        WelcomeUserFragment fragment = new WelcomeUserFragment();
+        Bundle args = new Bundle();
+        args.putString("KEY",msg);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+
     /**********************************************************
      *   Callback methods
      *********************************************************/
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle bundle)
@@ -54,6 +85,7 @@ public class WelcomeUserFragment extends Fragment {
     {
         super.onCreate(bundle);
         Log.d("Callback","onCreate");
+        fragmentMessage = getArguments().getString("KEY");
     }
 
 
