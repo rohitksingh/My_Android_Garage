@@ -22,6 +22,7 @@
         <activity android:name=".Activities.ThirdActivity"/>
         <activity android:name=".Activities.FragmentCommunicationActivity"/>
         <activity android:name=".Activities.InheritanceFragmentActivity"/>
+        <activity android:name=".Activities.FragmentMethodsActivity"/>
     </application>
 
 </manifest>
