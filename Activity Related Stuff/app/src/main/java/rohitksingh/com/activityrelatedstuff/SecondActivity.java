@@ -12,6 +12,13 @@ import android.widget.Toast;
 
 public class SecondActivity extends AppCompatActivity {
 
+    /*
+             THIS ACTIVITY SHOWCASES
+             demo for passing data and getting back data from Another Activity
+     */
+
+
+
     private Button button;
     private TextView textView;
 
