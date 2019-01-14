@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "821521660847",
+    "firebase_url": "https://fcm-demo-c317a.firebaseio.com",
+    "project_id": "fcm-demo-c317a",
+    "storage_bucket": "fcm-demo-c317a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:821521660847:android:06e7e8706888c8b7",
+        "android_client_info": {
+          "package_name": "ohitksingh.com.servicerelatedstuff"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "821521660847-4uv2fgmoctsgd9nn68n654dohdkvou4l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAw3fs5gtGZF65-wjSN0pvk4QxcEuQIKBc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:821521660847:android:35902b829011b818",
+        "android_client_info": {
+          "package_name": "rohitksingh.com.servicerelatedstuff"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "821521660847-4uv2fgmoctsgd9nn68n654dohdkvou4l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAw3fs5gtGZF65-wjSN0pvk4QxcEuQIKBc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
