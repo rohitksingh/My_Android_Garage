@@ -11,13 +11,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.security.PublicKey;
+
 import rohitksingh.com.servicerelatedstuff.R;
 import rohitksingh.com.servicerelatedstuff.Services.TimerIntentService;
 
 public class SecondActivity extends AppCompatActivity {
 
+    /************************************************************************************************************
+     *    THIS Activity showcases communication between a service and an Activity using Broadcast Receiver
+     *    When to register and unregister BroadcastReceiver to handle Activity state change
+     ************************************************************************************************************/
+
+
     private TextView textView;
     private Button button;
+
+    private  TimerReceiver receiver;
+    private IntentFilter filter;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -25,8 +36,8 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_activity);
 
-        TimerReceiver receiver = new TimerReceiver();
-        IntentFilter filter = new IntentFilter("DISPLAY_TIMER");
+        receiver = new TimerReceiver();
+        filter = new IntentFilter("DISPLAY_TIMER");
         registerReceiver(receiver,filter);
 
         getSupportActionBar().setTitle("Intent Service");
@@ -45,6 +56,34 @@ public class SecondActivity extends AppCompatActivity {
 
     }
 
+    /***********************************************************
+             It is necessary to unregister Receiver
+             to avoid memory leak
+     **********************************************************/
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+        unregisterReceiver(receiver);
+    }
+
+    /***************************************************************
+     *   Register again when the acttivity comes
+     *   from paused state again
+     *   Orientation change will be handled by onCreate() method
+     *
+     **************************************************************/
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        registerReceiver(receiver,filter);
+    }
+
+
+    /************************************************************
+            RECEIVER TO LISTEN Service broadcast
+     ************************************************************/
 
     class TimerReceiver extends BroadcastReceiver {
 

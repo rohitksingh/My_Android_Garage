@@ -15,8 +15,15 @@ import rohitksingh.com.servicerelatedstuff.Services.TimerService;
 
 public class FirstActivity extends AppCompatActivity {
 
+    /************************************************************************************************************
+     *    THIS Activity showcases communication between a service and an Activity using Broadcast Receiver
+     *    When to register and unregister BroadcastReceiver to handle Activity state change
+     ************************************************************************************************************/
+
     private TextView textView;
     private Button button;
+    private TimerReceiver receiver;
+    private IntentFilter filter;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -29,8 +36,8 @@ public class FirstActivity extends AppCompatActivity {
         button.setText("Start Timer");
         getSupportActionBar().setTitle("Started Service");
 
-        TimerReceiver receiver = new TimerReceiver();
-        IntentFilter filter = new IntentFilter("DISPLAY_TIMER");
+        receiver = new TimerReceiver();
+        filter = new IntentFilter("DISPLAY_TIMER");
         registerReceiver(receiver,filter);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +50,34 @@ public class FirstActivity extends AppCompatActivity {
 
     }
 
+    /***********************************************************
+     It is necessary to unregister Receiver
+     to avoid memory leak
+     **********************************************************/
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+        unregisterReceiver(receiver);
+    }
+
+    /***************************************************************
+     *   Register again when the acttivity comes
+     *   from paused state again
+     *   Orientation change will be handled by onCreate() method
+     *
+     **************************************************************/
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        registerReceiver(receiver,filter);
+    }
+
+
+    /************************************************************
+     RECEIVER TO LISTEN Service broadcast
+     ************************************************************/
 
     class TimerReceiver extends BroadcastReceiver {
 
