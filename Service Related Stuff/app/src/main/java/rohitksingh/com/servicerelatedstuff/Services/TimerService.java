@@ -8,7 +8,7 @@ import android.util.Log;
 
 public class TimerService extends Service {
 
-    /*
+    /*****************************************************************************************************************
 
      This Service is an example of Started Service
      since it does not have implementation for onBind thus it can not be Bound hence it is plain Started Service
@@ -24,19 +24,17 @@ public class TimerService extends Service {
 
      So even if you press button multiple times Service will run only once.
 
-     */
+     ******************************************************************************************************************/
 
 
 
     private Thread timer;
-
     private int startId;
 
     /*****************************************************************
               onCreate()
               Used for initial setup purpose. it is called only once
      ******************************************************************/
-
     @Override
     public void onCreate()
     {
@@ -81,7 +79,6 @@ public class TimerService extends Service {
          called by System when selfStop() or stopService is called
 
      **************************************************************/
-
     @Override
     public void onDestroy()
     {
@@ -89,6 +86,9 @@ public class TimerService extends Service {
     }
 
 
+    /************************************************************
+           Private method
+     ***********************************************************/
     private void configureTimer()
     {
          timer = new Thread(new Runnable() {
@@ -97,9 +97,9 @@ public class TimerService extends Service {
 
                 Intent displayTimerIntemt = new Intent("DISPLAY_TIMER");
 
-                for(int i=10;i>=0;i--)
+                for(int i=60;i>=0;i--)
                 {
-                    Log.d("Running timer", i+"");
+                    Log.d("TIMER", i+"");
                     try {
                         Thread.sleep(1000);
 

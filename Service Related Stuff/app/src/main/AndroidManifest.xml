@@ -21,6 +21,14 @@
         </activity>
         <activity android:name=".Activities.FirstActivity"/>
         <activity android:name=".Activities.SecondActivity"/>
+
+        <activity android:name=".Activities.FCMActivity">
+        <intent-filter>
+            <action android:name="com.rohit.fcm_notification"/>
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+        </activity>
+
         <service android:name=".Services.TimerService"/>
         <service android:name=".Services.TimerIntentService"/>
         <service android:name=".Services.MyFirebaseMessaginService">
