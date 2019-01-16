@@ -7,7 +7,7 @@
 ## This is a "**Quick Reference Repository**" for Android Related work.
 
 The repository contains following **code samples currently**(More to come).
-
+- [Firebase Cloud Messaging (FCM Foregound and Background Notification) ](https://github.com/rohitksingh/My_Android_Garage/tree/master/Service%20Related%20Stuff/app/src/main/java/rohitksingh/com/servicerelatedstuff/Services)
 - [FireBase Authentication: Google + Facebook + Twitter ](https://github.com/rohitksingh/My_Android_Garage/tree/master/FireBaseAuthentication)
 - [FireBase RealTime DataBase](https://github.com/rohitksingh/My_Android_Garage/tree/master/FireBaseRealTimeDB)
 - [Bound Service demo: Get location coordinates ](https://github.com/rohitksingh/My_Android_Garage/tree/master/BoundServiceDemo)
@@ -29,6 +29,11 @@ The repository contains following **code samples currently**(More to come).
 - [TabLayout with fragments using inheritance](https://github.com/rohitksingh/My_Android_Garage/tree/master/UI_Stuff/GooglePlayTabLayout)
 ---
 
+<h3 align="center">Firebase Authentication + Cloud Messaging + RealtimeDatabase + Firebase DataStore</h3>
+<p align="center"><img width ="800" height="350" src="https://user-images.githubusercontent.com/11274840/51231199-abcb8800-1988-11e9-86fb-744ea10ecbd6.png"></p>
+<a href="https://github.com/rohitksingh/My_Android_Garage/tree/master/FireBaseAuthentication"><p align="center">See project</p></a>
+
+---
 <h3 align="center">Getting started with Android Services: IntentService + Foreground  Services + Bound Services + Sticky Services</h3>
 <p align="center"><img width ="800" height="350" src="https://user-images.githubusercontent.com/11274840/32488276-1cc4e2a8-c3d2-11e7-923a-9920836e54a1.png"></p>
 <a href="https://github.com/rohitksingh/My_Android_Garage/tree/master/IntentServiceDemo"><p align="center">See project</p></a>
@@ -45,7 +50,7 @@ The repository contains following **code samples currently**(More to come).
 
 ---
 <h3 align="center">Read More on Moshi Library</h3>
-<p align="center"><img height="350" src="https://user-images.githubusercontent.com/11274840/31598237-1dc01a84-b26a-11e7-8f4e-d9b46957ce71.png"></p>
+<p align="center"><img height="350" src="https://user-images.githubusercontent.com/11274840/51231329-1e3c6800-1989-11e9-8279-76f504672bc0.jpeg"></p>
 <a href="https://medium.com/@r4rohit002/parse-json-with-moshi-873d0ff6af9b"><p align="center">See project</p></a>
 
 ---
