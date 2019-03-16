@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Multi Language Support</string>
+    <string name="about_android" translatable="false">एंड्रॉइड Google द्वारा विकसित एक मोबाइल ऑपरेटिंग सिस्टम है। यह लिनक्स कर्नेल और अन्य ओपन सोर्स सॉफ़्टवेयर के एक संशोधित संस्करण पर आधारित है, और मुख्य रूप से टचस्क्रीन मोबाइल उपकरणों जैसे कि स्मार्टफोन और टैबलेट के लिए डिज़ाइन किया गया है।</string>
+</resources>
