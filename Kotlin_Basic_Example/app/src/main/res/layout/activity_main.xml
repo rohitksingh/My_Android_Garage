@@ -15,4 +15,17 @@
         android:textColor="#ffffff"
         android:background="@color/colorPrimary"
         />
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Button"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:background="@color/colorPrimary"
+        android:layout_below="@id/button"
+        android:layout_marginTop="10dp"
+        />
+
 </RelativeLayout>
