@@ -1,5 +1,5 @@
 <h1 align="center">My Android Garage </h1> 
- <h3 align="center">(Don't feel shy to star this repository to show your support for this project)</h3>
+ <h3 align="center">(Don't feel shy to star this repository to show your support)</h3>
  
 ![android-mobile-application-development](https://user-images.githubusercontent.com/11274840/30295615-0e67cd96-96f6-11e7-8e50-e5117446d766.png)             
     
