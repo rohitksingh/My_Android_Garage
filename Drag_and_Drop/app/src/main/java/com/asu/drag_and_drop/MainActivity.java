@@ -1,5 +1,9 @@
 package com.asu.drag_and_drop;
 
+import android.content.ClipData;
+import android.content.ClipDescription;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -8,48 +12,134 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
+import android.view.DragEvent;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnLongClickListener, View.OnDragListener{
+
+    private ImageView draggableImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        draggableImage = findViewById(R.id.draggableImage);
+        addTags();
+        addListeners();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    private void addListeners(){
+        draggableImage.setOnLongClickListener(this);
+        draggableImage.setOnLongClickListener(this);
+        findViewById(R.id.parent).setOnDragListener(this);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    private void addTags(){
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        draggableImage.setTag("plus");
+
+    }
+
+
+    @Override
+    public boolean onDrag(View v, DragEvent event) {
+
+        int action = event.getAction();
+
+        switch (action) {
+
+            case DragEvent.ACTION_DRAG_STARTED:
+                // Determines if this View can accept the dragged data
+                if (event.getClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
+
+                    return true;
+                }
+
+                return false;
+
+            case DragEvent.ACTION_DRAG_ENTERED:
+
+                v.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
+                v.invalidate();
+                return true;
+
+            case DragEvent.ACTION_DRAG_LOCATION:
+                return true;
+
+            case DragEvent.ACTION_DRAG_EXITED:
+
+                v.getBackground().clearColorFilter();
+                v.invalidate();
+                return true;
+
+            case DragEvent.ACTION_DROP:
+
+                ClipData.Item item = event.getClipData().getItemAt(0);
+                // Gets the text data from the item.
+                String dragData = item.getText().toString();
+                // Displays a message containing the dragged data.
+                Toast.makeText(this, "Dragged data is " + dragData, Toast.LENGTH_SHORT).show();
+                // Turns off any color tints
+                v.getBackground().clearColorFilter();
+                // Invalidates the view to force a redraw
+                v.invalidate();
+
+                View vw = (View) event.getLocalState();
+                ViewGroup owner = (ViewGroup) vw.getParent();
+                owner.removeView(draggableImage); //remove the dragged view
+                //caste the view into LinearLayout as our drag acceptable layout is LinearLayout
+                RelativeLayout container = (RelativeLayout) v;
+                container.addView(draggableImage);//Add the dragged view
+                vw.setVisibility(View.VISIBLE);//finally set Visibility to VISIBLE
+
+                return true;
+
+            case DragEvent.ACTION_DRAG_ENDED:
+
+                v.getBackground().clearColorFilter();
+
+                v.invalidate();
+
+                if (event.getResult())
+                    Toast.makeText(this, "The drop was handled.", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(this, "The drop didn't work.", Toast.LENGTH_SHORT).show();
+
+                return true;
+
+            default:
+                Log.e("DragDrop Example", "Unknown action type received by OnDragListener.");
+                break;
         }
+        return false;
 
-        return super.onOptionsItemSelected(item);
+
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+
+        ClipData.Item item = new ClipData.Item((CharSequence) v.getTag());
+
+        String[] mimeTypes = {ClipDescription.MIMETYPE_TEXT_PLAIN};
+        ClipData data = new ClipData(v.getTag().toString(), mimeTypes, item);
+        View.DragShadowBuilder dragshadow = new View.DragShadowBuilder(v);
+
+        v.startDrag(data
+                , dragshadow
+                , v
+                , 0
+        );
+
+        return true;
     }
 }
