@@ -6,25 +6,22 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.util.Log;
 import android.view.DragEvent;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnLongClickListener, View.OnDragListener{
+
+
+    // Cat keeps the Layout params. To move the cat anywhere add a new Layout params
+    // The cat has marginBottom =10dp and alignParentBottom. Thats why it keeps the same
+    // layout params in the new draggable area.
 
     private ImageView draggableImage;
 
@@ -37,10 +34,11 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         addListeners();
     }
 
+    // Imp thing Add drag listener to both Draggable content and Draggable Area
     private void addListeners(){
         draggableImage.setOnLongClickListener(this);
         draggableImage.setOnLongClickListener(this);
-        findViewById(R.id.parent).setOnDragListener(this);
+        findViewById(R.id.draggableArea).setOnDragListener(this);
     }
 
     private void addTags(){
@@ -58,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         switch (action) {
 
             case DragEvent.ACTION_DRAG_STARTED:
-                // Determines if this View can accept the dragged data
+
                 if (event.getClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
 
                     return true;
@@ -84,22 +82,17 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
             case DragEvent.ACTION_DROP:
 
                 ClipData.Item item = event.getClipData().getItemAt(0);
-                // Gets the text data from the item.
                 String dragData = item.getText().toString();
-                // Displays a message containing the dragged data.
                 Toast.makeText(this, "Dragged data is " + dragData, Toast.LENGTH_SHORT).show();
-                // Turns off any color tints
                 v.getBackground().clearColorFilter();
-                // Invalidates the view to force a redraw
                 v.invalidate();
 
                 View vw = (View) event.getLocalState();
                 ViewGroup owner = (ViewGroup) vw.getParent();
-                owner.removeView(draggableImage); //remove the dragged view
-                //caste the view into LinearLayout as our drag acceptable layout is LinearLayout
+                owner.removeView(draggableImage);
                 RelativeLayout container = (RelativeLayout) v;
-                container.addView(draggableImage);//Add the dragged view
-                vw.setVisibility(View.VISIBLE);//finally set Visibility to VISIBLE
+                container.addView(draggableImage);
+                vw.setVisibility(View.VISIBLE);
 
                 return true;
 

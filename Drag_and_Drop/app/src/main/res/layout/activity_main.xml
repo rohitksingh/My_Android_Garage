@@ -4,16 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/parent"
-    android:background="#ffffff"
     >
+    <RelativeLayout
+        android:id="@+id/draggableArea"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="#ffffff"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Drag and drop anywhere"
-        android:layout_centerInParent="true"
+        android:text="Drag the cat to the top"
+        android:layout_below="@id/draggableArea"
         android:textStyle="bold"
         android:textSize="20dp"
+        android:layout_centerHorizontal="true"
         />
     <ImageView
         android:id="@+id/draggableImage"
