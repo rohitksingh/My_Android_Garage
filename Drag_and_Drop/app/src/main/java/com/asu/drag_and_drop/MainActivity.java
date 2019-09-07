@@ -81,18 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
 
             case DragEvent.ACTION_DROP:
 
-                ClipData.Item item = event.getClipData().getItemAt(0);
-                String dragData = item.getText().toString();
-                Toast.makeText(this, "Dragged data is " + dragData, Toast.LENGTH_SHORT).show();
-                v.getBackground().clearColorFilter();
-                v.invalidate();
-
-                View vw = (View) event.getLocalState();
-                ViewGroup owner = (ViewGroup) vw.getParent();
-                owner.removeView(draggableImage);
-                RelativeLayout container = (RelativeLayout) v;
-                container.addView(draggableImage);
-                vw.setVisibility(View.VISIBLE);
+                dropKitty(v, event);
 
                 return true;
 
@@ -134,5 +123,23 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         );
 
         return true;
+    }
+
+    // drop happens with the Layout params
+    public void dropKitty(View v, DragEvent event){
+
+        ClipData.Item item = event.getClipData().getItemAt(0);
+        String dragData = item.getText().toString();
+        Toast.makeText(this, "Dragged data is " + dragData, Toast.LENGTH_SHORT).show();
+        v.getBackground().clearColorFilter();
+        v.invalidate();
+
+        View vw = (View) event.getLocalState();
+        ViewGroup owner = (ViewGroup) vw.getParent();
+        owner.removeView(draggableImage);
+        RelativeLayout container = (RelativeLayout) v;
+        container.addView(draggableImage);
+        vw.setVisibility(View.VISIBLE);
+
     }
 }
