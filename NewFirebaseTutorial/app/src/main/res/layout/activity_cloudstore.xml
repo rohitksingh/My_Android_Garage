@@ -22,4 +22,10 @@
         android:layout_height="wrap_content"
         android:text="Submit"
         />
+    <Button
+        android:id="@+id/read"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Read"
+        />
 </LinearLayout>
