@@ -17,6 +17,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button db;
+    private Button song;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +26,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         db = findViewById(R.id.real_time_db);
         db.setOnClickListener(this);
+        song = findViewById(R.id.song);
+        song.setOnClickListener(this);
 
     }
 
     private void openRDActivity(){
         startActivity(new Intent(this, CloudStoreActivity.class));
+    }
+
+    private void openMusicActivity(){
+        startActivity(new Intent(this, MusicActivity.class));
     }
 
     @Override
@@ -41,11 +48,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 openRDActivity();
                 break;
 
-            default:
+            case R.id.song:
+                openMusicActivity();
                 break;
 
-
-
+            default:
+                break;
 
         }
 
