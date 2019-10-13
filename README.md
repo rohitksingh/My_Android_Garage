@@ -69,6 +69,11 @@ The repository contains following **code samples currently**(More to come).
 <a href="https://github.com/rohitksingh/My_Android_Garage/blob/master/BroadcastReceiver/READ.md"><p align="center">See project</p></a>
 
 ---
+<h3 align="center">Read More on DoubleTap Listener</h3>
+<p align="center"><img height="350" src="https://user-images.githubusercontent.com/11274840/66709961-99b62480-ed23-11e9-90a9-2c3fe87245bc.gif"></p>
+<a href="https://github.com/rohitksingh/My_Android_Garage/tree/master/DoubleTapListener"><p align="center">See project</p></a>
+
+---
 
 
 </br></br>
