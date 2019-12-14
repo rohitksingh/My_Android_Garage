@@ -1,7 +1,7 @@
 <h1 align="center">My Android Garage </h1> 
  <h3 align="center">(Don't feel shy to star this repository to show your support)</h3>
  
-![android-mobile-application-development](https://user-images.githubusercontent.com/11274840/30295615-0e67cd96-96f6-11e7-8e50-e5117446d766.png)             
+![android-mobile-application-development](https://user-images.githubusercontent.com/11274840/70845925-87cf2b80-1e11-11ea-90ce-ae80e766ce7a.jpg)             
     
     
 ## This is a "**Quick Reference Repository**" for Android Related work.
@@ -30,17 +30,17 @@ The repository contains following **code samples currently**(More to come).
 ---
 
 <h3 align="center">Firebase Authentication + Cloud Messaging + RealtimeDatabase + Firebase DataStore</h3>
-<p align="center"><img width ="800" height="350" src="https://user-images.githubusercontent.com/11274840/51231199-abcb8800-1988-11e9-86fb-744ea10ecbd6.png"></p>
+<p align="center"><img width ="800" height="350" src="https://user-images.githubusercontent.com/11274840/70845965-da104c80-1e11-11ea-9a8c-afa7ef72b858.jpg"></p>
 <a href="https://github.com/rohitksingh/My_Android_Garage/tree/master/FireBaseAuthentication"><p align="center">See project</p></a>
 
 ---
 <h3 align="center">Getting started with Android Services: IntentService + Foreground  Services + Bound Services + Sticky Services</h3>
-<p align="center"><img width ="800" height="350" src="https://user-images.githubusercontent.com/11274840/32488276-1cc4e2a8-c3d2-11e7-923a-9920836e54a1.png"></p>
+<p align="center"><img width ="800" height="350" src="https://user-images.githubusercontent.com/11274840/70845993-2491c900-1e12-11ea-9c0c-24c954c9ae06.jpg"></p>
 <a href="https://github.com/rohitksingh/My_Android_Garage/tree/master/IntentServiceDemo"><p align="center">See project</p></a>
 
 ---
 <h3 align="center">Schedule tasks with AlarmManager and JobScheduler</h3>
-<p align="center"><img width ="800" height="350" src="https://user-images.githubusercontent.com/11274840/32495496-e09097cc-c3eb-11e7-80a3-45a13ee16e95.jpg"></p>
+<p align="center"><img width ="800" height="350" src="https://user-images.githubusercontent.com/11274840/70846020-733f6300-1e12-11ea-89db-3d8d7afa8b37.jpg"></p>
 <a href="https://github.com/rohitksingh/My_Android_Garage/blob/master/JobSchedulerDemo/README.md"><p align="center">See project</p></a>
 
 ---
@@ -55,12 +55,12 @@ The repository contains following **code samples currently**(More to come).
 
 ---
 <h3 align="center">Read More on Moshi Library</h3>
-<p align="center"><img height="350" src="https://user-images.githubusercontent.com/11274840/51231329-1e3c6800-1989-11e9-8279-76f504672bc0.jpeg"></p>
+<p align="center"><img height="350" src="https://user-images.githubusercontent.com/11274840/70846043-99fd9980-1e12-11ea-9d72-91c3ccd02262.jpg"></p>
 <a href="https://medium.com/@r4rohit002/parse-json-with-moshi-873d0ff6af9b"><p align="center">See project</p></a>
 
 ---
 <h3 align="center">Read More on Custom Fonts</h3>
-<p align="center"><img width ="800" height="350" src="https://user-images.githubusercontent.com/11274840/30446253-6ce568a8-993d-11e7-82db-97fd7ca6bdf7.jpg"></p>
+<p align="center"><img width ="800" height="350" src="https://user-images.githubusercontent.com/11274840/70846063-c4e7ed80-1e12-11ea-923d-7519b09b7a5c.jpg"></p>
 <a href="https://github.com/rohitksingh/My_Android_Garage/blob/master/UI_Stuff/Themes/READ.md"><p align="center">See project</p></a>
 
 ---
