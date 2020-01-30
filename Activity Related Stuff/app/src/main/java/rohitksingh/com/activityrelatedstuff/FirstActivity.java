@@ -9,17 +9,16 @@ import android.widget.TextView;
 
 public class FirstActivity extends AppCompatActivity {
 
-
-
-    /*
+    /***********************************************************************************************
 
         This Demo showcases the orientation change
 
         SAVING PART
 
-        since super.onSaveInstanceState(outBundle); is commented System will not save Text in EditText which is the default behaviour
+        since super.onSaveInstanceState(outBundle); is commented
+        System will not save Text in EditText which is the default behaviour
 
-     */
+     **********************************************************************************************/
 
     private Button button;
     private EditText editText;
@@ -31,8 +30,8 @@ public class FirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_activity);
 
-        button = (Button)findViewById(R.id.button);
-        textView = (TextView)findViewById(R.id.textView);
+        button = findViewById(R.id.button);
+        textView = findViewById(R.id.textView);
 
         if(savedInstanceState!=null)
         {
@@ -49,31 +48,32 @@ public class FirstActivity extends AppCompatActivity {
 
     }
 
-    /*
+    /***********************************************************************************************
                                              SAVING STATE
 
-         onSaveInstanceState();
-         This is for saving Actiivity instance when Which will be used by System while recreating a
-         new instance of Activity
+     onSaveInstanceState();
+     This is for saving Actiivity instance when Which will be used by System while recreating a new
+     instance of Activity
 
-     */
+     **********************************************************************************************/
     @Override
-    protected void onSaveInstanceState(Bundle outBundle)
-    {
-        outBundle.putString(TEXT_VIEW_KEY,textView.getText().toString());
+    protected void onSaveInstanceState(Bundle outBundle) {
+        super.onSaveInstanceState(outBundle);
+        outBundle.putString(TEXT_VIEW_KEY, textView.getText().toString());
         //super.onSaveInstanceState(outBundle);    Comenting this would not save EditText value by default
     }
 
 
-    /*
+    /***********************************************************************************************
                                             RESTORING STATE
 
-                        State can be restored by any of the method
-                        a) onCreate(Bundle savedInstanceState)
-                        b) onRestoreInstanceState(Bundle savedInstanceState)
+     State can be restored by any of the method
+     a) onCreate(Bundle savedInstanceState)
+     b) onRestoreInstanceState(Bundle savedInstanceState)
 
-                 Both methods get same Bundle objects. Only difference is that a null check is required in case of onCreate() method
-     */
+     Both methods get same Bundle objects. Only difference is that a null check is required in case of onCreate() method
+
+     **********************************************************************************************/
 
     /*
     @Override

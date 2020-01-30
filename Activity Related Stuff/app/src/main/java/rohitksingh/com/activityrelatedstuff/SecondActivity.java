@@ -1,7 +1,6 @@
 package rohitksingh.com.activityrelatedstuff;
 
 import android.app.Activity;
-import android.arch.lifecycle.OnLifecycleEvent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,11 +11,12 @@ import android.widget.Toast;
 
 public class SecondActivity extends AppCompatActivity {
 
-    /*
-             THIS ACTIVITY SHOWCASES
-             demo for passing data and getting back data from Another Activity
-     */
+    /***********************************************************************************************
 
+             THIS ACTIVITY SHOWCASES
+             Demo for passing data and getting back data from Another Activity
+
+     **********************************************************************************************/
 
 
     private Button button;
@@ -25,12 +25,10 @@ public class SecondActivity extends AppCompatActivity {
     public static String KEY = "ohitksingh.com.activityrelatedstuff.SecondActivity";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_activity);
-
-
 
         button = (Button)findViewById(R.id.button);
         textView = (TextView)findViewById(R.id.textView);
@@ -44,7 +42,6 @@ public class SecondActivity extends AppCompatActivity {
                 intent.putExtra(KEY,"This value is sent from First Activity");
                 startActivityForResult(intent,9000);
 
-
             }
         });
 
@@ -52,8 +49,8 @@ public class SecondActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onActivityResult(int reqCode, int resCode, Intent intent)
-    {
+    protected void onActivityResult(int reqCode, int resCode, Intent intent) {
+
         if(reqCode==9000)
         {
             if(resCode== Activity.RESULT_OK)

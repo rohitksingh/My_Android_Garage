@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.util.PropertyResourceBundle;
-
 public class SecondSupportActivity extends AppCompatActivity {
 
     private EditText editText;
