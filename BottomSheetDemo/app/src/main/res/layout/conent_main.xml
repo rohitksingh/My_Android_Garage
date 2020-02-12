@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentTop="true"
+    android:background="#E9E5DC"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_main">
+
+    <Button
+        android:id="@+id/btn_bottom_sheet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorPrimary"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="Show Bottom Sheet"
+        android:textColor="@android:color/holo_orange_light" />
+
+    <Button
+        android:id="@+id/btn_bottom_sheet_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:text="Show Bottom Sheet Dialog"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btn_bottom_sheet_dialog_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:text="Show Bottom Sheet Dialog Fragment"
+        android:visibility="gone" />
+
+</LinearLayout>
