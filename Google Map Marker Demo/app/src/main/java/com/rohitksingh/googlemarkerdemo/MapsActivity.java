@@ -28,7 +28,7 @@ import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnCameraMoveStartedListener, GoogleMap.OnCameraIdleListener, GoogleMap.OnCameraMoveListener {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnCameraMoveStartedListener, GoogleMap.OnCameraIdleListener, GoogleMap.OnCameraMoveListener, OnSuccessListener<Location> {
 
     private GoogleMap mMap;
     private FusedLocationProviderClient fusedLocationClient;
@@ -42,62 +42,32 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     
     private TextView currentLocation;
     private ImageView dummyDot;
+    private SupportMapFragment mapFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         dummyDot = findViewById(R.id.dummyDot);
         currentLocation = findViewById(R.id.address);
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
     }
 
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
         mMap = googleMap;
-        markerOptions = new MarkerOptions();
-        markerOptions.draggable(true);
-
-        fusedLocationClient.getLastLocation()
-                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-
-                        if (location != null) {
-
-                            try {
-
-                                currentLatLng = new LatLng(location.getLatitude(), location.getLongitude());
-
-                                markerOptions.position(currentLatLng).title("Deliver Here");
-                                marker = mMap.addMarker(markerOptions);
-
-                                cameraPosition = new CameraPosition.Builder()
-                                        .target(currentLatLng)
-                                        .zoom(15)
-                                        .bearing(90)
-                                        .tilt(90)
-                                        .build();
-
-                                mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-                                getAddress(initial_location);
-
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-
-                        }
-                    }
-                });
-
         mMap.setOnCameraIdleListener(this);
         mMap.setOnCameraMoveListener(this);
         mMap.setOnCameraMoveStartedListener(this);
+        getCurrentLocation();
+        markerOptions = new MarkerOptions();
+        markerOptions.draggable(true);
 
     }
 
@@ -105,7 +75,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onCameraIdle() {
 
         addMarker();
-
         try {
             getAddress(mMap.getCameraPosition().target);
         } catch (IOException e) {
@@ -120,6 +89,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onCameraMoveStarted(int i) {
+
         if(marker!=null) {
 
             marker.remove();
@@ -130,7 +100,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
+
+    /***********************************************************************************************
+     *
+     *                          Private Helper method
+     *
+     ***********************************************************************************************/
+
     private void addMarker(){
+
         LatLng latLng = mMap.getCameraPosition().target;
         markerOptions.position(latLng);
         marker = mMap.addMarker(markerOptions);
@@ -158,5 +136,39 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         Log.d(TAG, "getAddress: "+addresses);
         currentLocation.setText(address+", "+city+", "+state+", "+country);
+    }
+
+
+    private void getCurrentLocation(){
+
+        fusedLocationClient.getLastLocation().addOnSuccessListener(this);
+
+    }
+
+    // Success listener when the last loaction is received this method is triggered.
+    @Override
+    public void onSuccess(Location location) {
+
+        if (location != null) {
+             try {
+                    currentLatLng = new LatLng(location.getLatitude(), location.getLongitude());
+
+                    markerOptions.position(currentLatLng).title("Deliver Here");
+                    marker = mMap.addMarker(markerOptions);
+                    cameraPosition = new CameraPosition.Builder()
+                                        .target(currentLatLng)
+                                        .zoom(15)
+                                        .bearing(90)
+                                        .tilt(90)
+                                        .build();
+
+                    mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                    getAddress(initial_location);
+
+             } catch (IOException e) {
+                                e.printStackTrace();
+             }
+        }
+
     }
 }
