@@ -17,7 +17,7 @@ public class FireMissilesDialog extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        // Use the Builder class for convenient dialog construction
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage("This is custom Dialog")
                 .setPositiveButton("YES", new DialogInterface.OnClickListener() {
@@ -30,7 +30,6 @@ public class FireMissilesDialog extends DialogFragment {
                         listner.noClicked();
                     }
                 });
-        // Create the AlertDialog object and return it
         return builder.create();
     }
 }
