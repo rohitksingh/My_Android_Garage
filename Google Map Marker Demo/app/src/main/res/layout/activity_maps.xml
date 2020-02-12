@@ -3,23 +3,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MapsActivity">
-    <TextView
-        android:id="@+id/address"
-        android:layout_width="match_parent"
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="wrap_content"
-        android:text="Address"
-        android:layout_alignParentTop="true"
-        />
+        android:layout_width="match_parent"
+        android:elevation="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="10dp"
+        android:innerRadius="0dp"
+        android:shape="ring"
+        android:layout_margin="16dp"
+        android:background="@color/colorPrimary"
+        android:thicknessRatio="1.9"
+        android:layout_alignParentBottom="true"
+        android:padding="10dp"
+        >
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textSize="16dp"
+            />
+    </androidx.cardview.widget.CardView>
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activities.AddressActivity"
-        android:layout_below="@id/address"
         />
-
+    <ImageView
+        android:id="@+id/dummyDot"
+        android:layout_centerInParent="true"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/dot"
+        android:visibility="gone"
+        />
 </RelativeLayout>
 
 

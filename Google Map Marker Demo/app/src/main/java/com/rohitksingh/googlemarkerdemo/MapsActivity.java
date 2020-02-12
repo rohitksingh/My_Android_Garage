@@ -1,53 +1,116 @@
 package com.rohitksingh.googlemarkerdemo;
 
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnCameraMoveStartedListener, GoogleMap.OnCameraIdleListener, GoogleMap.OnCameraMoveListener {
 
     private GoogleMap mMap;
+    private FusedLocationProviderClient fusedLocationClient;
+    private Marker marker;
+    private MarkerOptions markerOptions;
+    private CameraPosition cameraPosition;
+    private LatLng initial_location = new LatLng(25.393860, 81.855170);
+    private LatLng currentLatLng;
+
+    private static final String TAG = "MapsActivity";
+    
+    private TextView currentLocation;
+    private ImageView dummyDot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        dummyDot = findViewById(R.id.dummyDot);
+        currentLocation = findViewById(R.id.address);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
     }
 
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        markerOptions = new MarkerOptions();
+        markerOptions.draggable(true);
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+
+                        if (location != null) {
+
+                            try {
+
+                                currentLatLng = new LatLng(location.getLatitude(), location.getLongitude());
+
+                                markerOptions.position(currentLatLng).title("Deliver Here");
+                                marker = mMap.addMarker(markerOptions);
+
+                                cameraPosition = new CameraPosition.Builder()
+                                        .target(currentLatLng)
+                                        .zoom(15)
+                                        .bearing(90)
+                                        .tilt(90)
+                                        .build();
+
+                                mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                                getAddress(initial_location);
+
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }
+                });
+
+        mMap.setOnCameraIdleListener(this);
+        mMap.setOnCameraMoveListener(this);
+        mMap.setOnCameraMoveStartedListener(this);
+
     }
 
     @Override
     public void onCameraIdle() {
 
+        addMarker();
+
+        try {
+            getAddress(mMap.getCameraPosition().target);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -57,6 +120,43 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onCameraMoveStarted(int i) {
+        if(marker!=null) {
 
+            marker.remove();
+
+            if(dummyDot.getVisibility()==View.GONE){
+                dummyDot.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    private void addMarker(){
+        LatLng latLng = mMap.getCameraPosition().target;
+        markerOptions.position(latLng);
+        marker = mMap.addMarker(markerOptions);
+
+        if(dummyDot.getVisibility()!= View.GONE){
+            dummyDot.setVisibility(View.GONE);
+        }
+
+    }
+
+    private void getAddress(LatLng latLng) throws IOException {
+
+        Geocoder geocoder;
+        List<Address> addresses;
+        geocoder = new Geocoder(this, Locale.getDefault());
+
+        addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+
+        String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+        String city = addresses.get(0).getLocality();
+        String state = addresses.get(0).getAdminArea();
+        String country = addresses.get(0).getCountryName();
+        String postalCode = addresses.get(0).getPostalCode();
+        String knownName = addresses.get(0).getFeatureName();
+
+        Log.d(TAG, "getAddress: "+addresses);
+        currentLocation.setText(address+", "+city+", "+state+", "+country);
     }
 }
