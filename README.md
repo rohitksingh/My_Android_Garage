@@ -49,6 +49,11 @@ The repository contains following **code samples currently**(More to come).
 <a href="https://medium.com/@rohitksingh/start-your-activity-with-explode-animation-2a6cbba5b9cf"><p align="center">See project</p></a>
 
 ---
+<h3 align="center">Select Address by moving MAP</h3>
+<p align="center"><img height="350" src="https://user-images.githubusercontent.com/11274840/74303716-09f7a580-4d18-11ea-9a9b-4a8cfb19759f.gif"></p>
+<a href="https://github.com/rohitksingh/My_Android_Garage/tree/master/Google%20Map%20Marker%20Demo"><p align="center">See project</p></a>
+
+---
 <h3 align="center">Read More on Reveal Animation</h3>
 <p align="center"><img height="350" src="https://user-images.githubusercontent.com/11274840/30338466-a2801128-97a0-11e7-988d-137ca0557a1c.gif"></p>
 <a href="https://github.com/rohitksingh/My_Android_Garage/blob/master/Transition/READ.md"><p align="center">See project</p></a>
