@@ -1,8 +1,12 @@
 package com.rohitksingh.introscreendemo;
 
+import android.app.Activity;
 import android.os.Bundle;
 
+import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 public class MainActivity extends AppCompatActivity {
 
