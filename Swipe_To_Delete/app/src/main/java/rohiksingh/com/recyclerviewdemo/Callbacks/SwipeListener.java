@@ -27,5 +27,6 @@ public class SwipeListener extends ItemTouchHelper.SimpleCallback {
     @Override
     public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         Toast.makeText(context,"Item "+i+" Swiped", Toast.LENGTH_SHORT).show();
+        adapter.deleteItem(viewHolder.getAdapterPosition());
     }
 }

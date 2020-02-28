@@ -29,14 +29,14 @@ public class ListActivity extends AppCompatActivity implements ListCallback{
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-        rv = (RecyclerView)findViewById(R.id.rv);
+        rv = findViewById(R.id.rv);
         adapter = new PeopleListAdapter(this, getDummyList());
-        swipeListener = new SwipeListener(this, (PeopleListAdapter) adapter);
-        itemTouchHelper = new ItemTouchHelper(swipeListener);
-        itemTouchHelper.attachToRecyclerView(rv);
         layoutManager = new LinearLayoutManager(this);
         rv.setLayoutManager(layoutManager);
         rv.setAdapter(adapter);
+        swipeListener = new SwipeListener(this, (PeopleListAdapter) adapter);
+        itemTouchHelper = new ItemTouchHelper(swipeListener);
+        itemTouchHelper.attachToRecyclerView(rv);
     }
 
 
