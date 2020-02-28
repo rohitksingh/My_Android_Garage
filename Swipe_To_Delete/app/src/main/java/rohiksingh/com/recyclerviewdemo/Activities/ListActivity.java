@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import rohiksingh.com.recyclerviewdemo.Adapters.PeopleListAdapter;
 import rohiksingh.com.recyclerviewdemo.Callbacks.ListCallback;
+import rohiksingh.com.recyclerviewdemo.Callbacks.SwipeListener;
 import rohiksingh.com.recyclerviewdemo.Models.Person;
 import rohiksingh.com.recyclerviewdemo.R;
 import rohiksingh.com.recyclerviewdemo.Utilities.AppUtility;
@@ -20,6 +22,8 @@ public class ListActivity extends AppCompatActivity implements ListCallback{
     private RecyclerView rv;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
+    private SwipeListener swipeListener;
+    private ItemTouchHelper itemTouchHelper;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -27,6 +31,9 @@ public class ListActivity extends AppCompatActivity implements ListCallback{
         setContentView(R.layout.activity_list);
         rv = (RecyclerView)findViewById(R.id.rv);
         adapter = new PeopleListAdapter(this, getDummyList());
+        swipeListener = new SwipeListener(this, (PeopleListAdapter) adapter);
+        itemTouchHelper = new ItemTouchHelper(swipeListener);
+        itemTouchHelper.attachToRecyclerView(rv);
         layoutManager = new LinearLayoutManager(this);
         rv.setLayoutManager(layoutManager);
         rv.setAdapter(adapter);
