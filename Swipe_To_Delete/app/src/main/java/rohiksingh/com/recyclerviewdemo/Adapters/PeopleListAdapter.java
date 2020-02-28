@@ -63,7 +63,7 @@ public class PeopleListAdapter extends RecyclerView.Adapter<PeopleListAdapter.Pe
 
         public PeopleViewHolder(@NonNull View itemView) {
             super(itemView);
-            name = (TextView)itemView.findViewById(R.id.name);
+            name = itemView.findViewById(R.id.name);
         }
     }
 
@@ -71,6 +71,5 @@ public class PeopleListAdapter extends RecyclerView.Adapter<PeopleListAdapter.Pe
         Toast.makeText(context, "Items remained"+ people.size(), Toast.LENGTH_LONG).show();
         people.remove(position);
         notifyItemRemoved(position);
-        notifyDataSetChanged();
     }
 }

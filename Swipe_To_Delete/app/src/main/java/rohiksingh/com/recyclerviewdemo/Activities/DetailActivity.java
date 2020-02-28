@@ -16,13 +16,9 @@ public class DetailActivity extends AppCompatActivity{
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        name = (TextView)findViewById(R.id.name);
+        name = findViewById(R.id.name);
         Person person = (Person) getIntent().getSerializableExtra(AppUtility.NAME);
         name.setText(person.getName());
-
     }
-
-
-
 
 }
