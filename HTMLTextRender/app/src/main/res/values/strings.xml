@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">HTMLTextRender</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="textFromRes">
+        &lt;font color="#FF0000">This is colored in red &lt;/font> This is not
+        &lt;br /&gt;
+        &lt;h1> This is h1 heading &lt;/h1>
+        &lt;br /&gt;
+        &lt;h3> This is h2 subheading&lt;/h3>
+        &lt;br /&gt;
+        &lt;b> This text is bold&lt;/b>
+        &lt;br /&gt;
+        &lt;i> This text is italic&lt;/i>
+        &lt;br /&gt;
+        Android users expect your app to look and behave in a way that is
+        consistent with the platform. Not only should you follow material
+        design guidelines for visual and navigation patterns,
+        but you should also follow quality guidelines for compatibility,
+        performance, security, and more.
+        &lt;br /&gt;
+        &lt;br /&gt;
+        The following links provide everything you need to design a high quality Android app.
+    </string>
+</resources>
