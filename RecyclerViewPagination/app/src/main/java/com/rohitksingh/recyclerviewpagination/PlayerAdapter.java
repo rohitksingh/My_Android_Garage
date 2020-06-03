@@ -1,8 +1,11 @@
 package com.rohitksingh.recyclerviewpagination;
 
 import android.content.Context;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -22,12 +25,14 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerHold
     @NonNull
     @Override
     public PlayerHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(context).inflate(R.layout.item_player, parent, false);
+        return new PlayerHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull PlayerHolder holder, int position) {
-
+        Player player = playerList.get(position);
+        holder.playerName.setText(player.getName());
     }
 
     @Override
@@ -35,10 +40,22 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerHold
         return playerList.size();
     }
 
+    public void updateData(List<Player> newList){
+
+        if(newList!=null){
+            playerList = newList;
+        }
+
+        notifyDataSetChanged();
+    }
+
     public class PlayerHolder extends RecyclerView.ViewHolder{
+
+        private TextView playerName;
 
         public PlayerHolder(@NonNull View itemView) {
             super(itemView);
+            playerName = itemView.findViewById(R.id.playerName);
         }
     }
 
