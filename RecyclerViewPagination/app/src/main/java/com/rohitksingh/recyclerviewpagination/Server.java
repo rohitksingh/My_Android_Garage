@@ -11,7 +11,7 @@ public class Server {
 
         for(int i=0;i<10;i++){
             Player player = new Player();
-            player.setName("Player "+(i*pageNum));
+            player.setName("Player "+(i+(10*pageNum)));
             playerList.add(player);
         }
 

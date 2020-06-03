@@ -16,10 +16,12 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerHold
 
     private Context context;
     private List<Player> playerList;
+    private PaginationCallback callback;
 
     public PlayerAdapter(Context context, List<Player> playerList){
         this.context = context;
         this.playerList = playerList;
+        callback = (PaginationCallback)context;
     }
 
     @NonNull
@@ -33,6 +35,10 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerHold
     public void onBindViewHolder(@NonNull PlayerHolder holder, int position) {
         Player player = playerList.get(position);
         holder.playerName.setText(player.getName());
+
+        if(position+1 == playerList.size()){
+            callback.callNextPage();
+        }
     }
 
     @Override
