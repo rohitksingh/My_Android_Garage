@@ -1,12 +1,19 @@
 <resources>
     <string name="app_name">JustifyText</string>
     <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="about_boole">
+        <![CDATA[
+        <html>
+        <head>
+        <style type="text/css">body{color: #fff; font-size: 16px; text-align: justify;}"</style>
+        </head>
+         <body>
+          George Boole (2 November 1815 – 8 December 1864) was a largely self-taught English mathematician, philosopher and logician, most of whose short career was spent as the first professor of mathematics at Queen College, Cork in Ireland. He worked in the fields of differential equations and algebraic logic, and is best known as the author of The Laws of Thought (1854) which contains Boolean algebra. Boolean logic is credited with laying the foundations for the information age.[4] Boole maintained that:
+         </body>
+        </html>
+        ]]>
+    </string>
+
 </resources>

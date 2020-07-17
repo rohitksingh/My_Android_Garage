@@ -6,5 +6,18 @@
     <WebView
         android:id="@+id/justifyText"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16sp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="George Boole"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:layout_above="@id/justifyText"
+        />
 </RelativeLayout>
