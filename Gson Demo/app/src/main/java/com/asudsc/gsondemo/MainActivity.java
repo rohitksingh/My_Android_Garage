@@ -8,10 +8,14 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //parsJson1();
         //parseJson2();
+        //parseJson3();
+        parseJson4();
     }
 
 
@@ -48,10 +54,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //Case 3: Nested elements with ArrayList
     public void parseJson3(){
-        String jsonResponse = readJsonFromFile(this, "");
+
+        String jsonResponse = readJsonFromFile(this, "case3.json");
+        Gson gson = new GsonBuilder().create();
+        Case3Restaurant restaurant = gson.fromJson(jsonResponse, Case3Restaurant.class);
+
+        Log.d(TAG, "parseJson3: "+restaurant.toString());
+
+    }
 
 
+    //Case 4: Parse a List
+    public void parseJson4(){
+
+        String jsonResponse = readJsonFromFile(this , "case4.json");
+        Gson gson = new GsonBuilder().create();
+
+        //Convert to Array
+        Case4User[] user = gson.fromJson(jsonResponse, Case4User[].class);
+
+        //For ArrayList. You need to create a Type
+        Type userListType = new TypeToken<ArrayList<Case4User>>(){}.getType();
+        List<Case4User> _user = gson.fromJson(jsonResponse, userListType);
+
+        Log.d(TAG, "parseJson4 array: "+user[0].toString());
+        Log.d(TAG, "parseJson4 ArrayList: "+ _user.toString());
 
     }
 
