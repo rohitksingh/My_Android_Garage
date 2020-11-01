@@ -15,8 +15,10 @@ import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
         //parsJson1();
         //parseJson2();
         //parseJson3();
-        parseJson4();
+        //parseJson4();
+        parseJson5();
     }
 
 
@@ -110,9 +113,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     //Case 4: Parse to Array, ArrayList, Set
-    // Same Json but it can be deserialized into Array, List, Set
+    // Same Json but it can be deserialized into Array, List
     // Array is simplest
-    // For ArrayList and Set we need to define Type.
+    // For ArrayList we need to define Type.
     /********************************************
 
      [
@@ -153,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //Case 5: Parse Map Object
+    //Case 5: Parse to Set
     /*********************************************
     {
         "1$": {
@@ -170,6 +173,19 @@ public class MainActivity extends AppCompatActivity {
         }
     }
      ********************************************/
+    public void parseJson5(){
+
+        String jsonResponse = readJsonFromFile(this, "case5.json");
+        Gson gson = new GsonBuilder().create();
+        Type currencySetType = new TypeToken<HashMap<String, Case5Currency>>(){}.getType();
+
+        HashMap<String, Case5Currency> currencySet = gson.fromJson(jsonResponse, currencySetType);
+
+        Log.d(TAG, "parseJson5: "+currencySet.toString());
+
+    }
+
+
     public static String readJsonFromFile(Context context, String fileName){
 
         String json = null;
