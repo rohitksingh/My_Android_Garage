@@ -22,11 +22,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        parseNormalJson();
+        //parsJson1();
+
+        parseJson2();
     }
 
 
-    public void parseNormalJson(){
+    //Case 1: When the fields in the json and POJO is same
+    public void parsJson1(){
 
         String jsonResponse = readJsonFromFile(this, "simple.json");
         Gson gson = new GsonBuilder().create();
@@ -36,6 +39,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Case 2: Mapping of Nested Objects
+    public void parseJson2(){
+
+        String jsonResonse = readJsonFromFile(this, "case2.json");
+        Gson gson = new GsonBuilder().create();
+        UserCase2 user = gson.fromJson(jsonResonse, UserCase2.class);
+
+        Log.d(TAG, "parseJson2: "+user.toString());
+    }
 
 
     public static String readJsonFromFile(Context context, String fileName){

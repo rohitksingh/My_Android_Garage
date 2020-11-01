@@ -1,0 +1,13 @@
+{
+  "age": 26,
+  "email": "norman@futurestud.io",
+  "isDeveloper": true,
+  "name": "Norman",
+
+  "userAddress": {
+    "city": "Magdeburg",
+    "country": "Germany",
+    "houseNumber": "42A",
+    "street": "Main Street"
+  }
+}
