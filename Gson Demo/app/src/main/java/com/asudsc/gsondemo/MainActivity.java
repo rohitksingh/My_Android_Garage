@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -108,7 +109,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //Case 4: Parse a List
+    //Case 4: Parse to Array, ArrayList, Set
+    // Same Json but it can be deserialized into Array, List, Set
+    // Array is simplest
+    // For ArrayList and Set we need to define Type.
     /********************************************
 
      [
@@ -135,12 +139,17 @@ public class MainActivity extends AppCompatActivity {
         //Convert to Array
         Case4User[] user = gson.fromJson(jsonResponse, Case4User[].class);
 
-        //For ArrayList. You need to create a Type
+        //Convert to ArrayList. You need to create a Type
         Type userListType = new TypeToken<ArrayList<Case4User>>(){}.getType();
         List<Case4User> _user = gson.fromJson(jsonResponse, userListType);
 
+        //Convert to set
+        Type userSetType = new TypeToken<HashSet<Case4User>>(){}.getType();
+        HashSet<Case4User> __user = gson.fromJson(jsonResponse, userSetType);
+
         Log.d(TAG, "parseJson4 array: "+user[0].toString());
         Log.d(TAG, "parseJson4 ArrayList: "+ _user.toString());
+        Log.d(TAG, "parseJson4 ArrayList: "+ __user.toString());
 
     }
 
