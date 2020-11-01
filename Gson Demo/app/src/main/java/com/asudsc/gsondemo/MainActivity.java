@@ -28,11 +28,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //parsJson1();
+        parsJson1();
         //parseJson2();
         //parseJson3();
         //parseJson4();
-        parseJson5();
+//        parseJson5();
     }
 
 
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         Gson gson = new GsonBuilder().create();
         Case1User user = gson.fromJson(jsonResponse, Case1User.class);
 
-        Log.d(TAG, "parseNormalJson: "+user.toSting());
+        Log.d(TAG, "parseNormalJson: "+user.toString());
 
     }
 

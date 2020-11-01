@@ -7,7 +7,7 @@ public class Case1User {
     public String email;
     public boolean isDeveloper;
 
-    public String toSting(){
+    public String toString(){
         return name +" "+ age +" "+ email+" "+isDeveloper;
     }
 }
