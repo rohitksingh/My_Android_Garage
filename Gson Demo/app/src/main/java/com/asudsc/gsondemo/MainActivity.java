@@ -3,7 +3,6 @@ package com.asudsc.gsondemo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     //Case 1: When the fields in the json and POJO is same
     public void parsJson1(){
 
-        String jsonResponse = readJsonFromFile(this, "simple.json");
+        String jsonResponse = readJsonFromFile(this, "case1.json");
         Gson gson = new GsonBuilder().create();
         User user = gson.fromJson(jsonResponse, User.class);
 

@@ -6,14 +6,14 @@ public class UserCase2 {
     private int age;
     private String email;
     private boolean isDeveloper;
-    private UserAddress userAddress;
+    private UserCase1 userAddress;
 
     public String toString(){
         return name+" "+age+" "+email+" "+isDeveloper+" "+userAddress.toString();
     }
 }
 
-class UserAddress{
+class UserCase1 {
     private String city;
     private String country;
     private String houseNumber;
