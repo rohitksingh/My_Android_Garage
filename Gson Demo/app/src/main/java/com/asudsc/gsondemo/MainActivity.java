@@ -22,8 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //parsJson1();
-
-        parseJson2();
+        //parseJson2();
     }
 
 
@@ -46,6 +45,14 @@ public class MainActivity extends AppCompatActivity {
         Case2UserAddress user = gson.fromJson(jsonResonse, Case2UserAddress.class);
 
         Log.d(TAG, "parseJson2: "+user.toString());
+    }
+
+
+    public void parseJson3(){
+        String jsonResponse = readJsonFromFile(this, "");
+
+
+
     }
 
 

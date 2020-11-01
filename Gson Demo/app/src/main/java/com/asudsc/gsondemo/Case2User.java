@@ -2,11 +2,11 @@ package com.asudsc.gsondemo;
 
 public class Case2User {
 
-    private String name;
-    private int age;
-    private String email;
-    private boolean isDeveloper;
-    private Case2UserAddress userAddress;
+    public String name;
+    public int age;
+    public String email;
+    public boolean isDeveloper;
+    public Case2UserAddress userAddress;
 
     public String toString(){
         return name+" "+age+" "+email+" "+isDeveloper+" "+userAddress.toString();
