@@ -1,6 +1,6 @@
 package com.asudsc.gsondemo;
 
-public class User {
+public class Case1User {
 
     private String name;
     private int age;

@@ -1,0 +1,17 @@
+{
+  "menu": [
+    {
+      "description": "Spaghetti",
+      "price": 7.99
+    },
+    {
+      "description": "Steak",
+      "price": 12.99
+    },
+    {
+      "description": "Salad",
+      "price": 5.99
+    }
+  ],
+  "name": "Future Studio Steak House"
+}

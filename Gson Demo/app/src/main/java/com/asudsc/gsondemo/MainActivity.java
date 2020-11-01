@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         String jsonResponse = readJsonFromFile(this, "case1.json");
         Gson gson = new GsonBuilder().create();
-        User user = gson.fromJson(jsonResponse, User.class);
+        Case1User user = gson.fromJson(jsonResponse, Case1User.class);
 
         Log.d(TAG, "parseNormalJson: "+user.toSting());
 
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         String jsonResonse = readJsonFromFile(this, "case2.json");
         Gson gson = new GsonBuilder().create();
-        UserCase2 user = gson.fromJson(jsonResonse, UserCase2.class);
+        Case2UserAddress user = gson.fromJson(jsonResonse, Case2UserAddress.class);
 
         Log.d(TAG, "parseJson2: "+user.toString());
     }

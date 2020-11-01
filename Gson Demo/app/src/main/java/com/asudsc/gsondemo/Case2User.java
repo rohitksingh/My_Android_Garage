@@ -1,19 +1,19 @@
 package com.asudsc.gsondemo;
 
-public class UserCase2 {
+public class Case2User {
 
     private String name;
     private int age;
     private String email;
     private boolean isDeveloper;
-    private UserCase1 userAddress;
+    private Case2UserAddress userAddress;
 
     public String toString(){
         return name+" "+age+" "+email+" "+isDeveloper+" "+userAddress.toString();
     }
 }
 
-class UserCase1 {
+class Case2UserAddress {
     private String city;
     private String country;
     private String houseNumber;
