@@ -7,6 +7,9 @@ import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -26,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
     public void parseNormalJson(){
 
         String jsonResponse = readJsonFromFile(this, "simple.json");
+        Gson gson = new GsonBuilder().create();
+        User user = gson.fromJson(jsonResponse, User.class);
+
+        Log.d(TAG, "parseNormalJson: "+user.toSting());
 
     }
 
