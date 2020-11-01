@@ -1,0 +1,14 @@
+{
+  "1$": {
+    "amount": 1,
+    "currency": "Dollar"
+  },
+  "2$": {
+    "amount": 2,
+    "currency": "Dollar"
+  },
+  "3€": {
+    "amount": 3,
+    "currency": "Euro"
+  }
+}

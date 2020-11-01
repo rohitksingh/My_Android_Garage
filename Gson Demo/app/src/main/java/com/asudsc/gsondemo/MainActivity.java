@@ -33,6 +33,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     //Case 1: When the fields in the json and POJO is same
+    /***************************************
+     {
+         "name": "Norman",
+         "email": "norman@futurestud.io",
+         "age": 26,
+         "isDeveloper": true
+     }
+     ***************************************/
     public void parsJson1(){
 
         String jsonResponse = readJsonFromFile(this, "case1.json");
@@ -43,7 +51,22 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // Case 2: Mapping of Nested Objects
+    // Case 2: Parse Nested Objects
+    /***************************************
+     {
+         "age": 26,
+         "email": "norman@futurestud.io",
+         "isDeveloper": true,
+         "name": "Norman",
+
+         "userAddress": {
+             "city": "Magdeburg",
+             "country": "Germany",
+             "houseNumber": "42A",
+             "street": "Main Street"
+         }
+     }
+     ***************************************/
     public void parseJson2(){
 
         String jsonResonse = readJsonFromFile(this, "case2.json");
@@ -55,6 +78,25 @@ public class MainActivity extends AppCompatActivity {
 
 
     //Case 3: Nested elements with ArrayList
+    /***************************************
+     {
+         "menu": [
+             {
+                "description": "Spaghetti",
+                "price": 7.99
+             },
+             {
+                "description": "Steak",
+                "price": 12.99
+             },
+             {
+                "description": "Salad",
+                "price": 5.99
+             }
+         ],
+         "name": "Future Studio Steak House"
+     }
+     **************************************/
     public void parseJson3(){
 
         String jsonResponse = readJsonFromFile(this, "case3.json");
@@ -67,6 +109,24 @@ public class MainActivity extends AppCompatActivity {
 
 
     //Case 4: Parse a List
+    /********************************************
+
+     [
+        {
+            "description": "Spaghetti",
+                "price": 7.99
+        },
+        {
+            "description": "Steak",
+                "price": 12.99
+        },
+        {
+            "description": "Salad",
+                "price": 5.99
+        }
+     ]
+
+     ********************************************/
     public void parseJson4(){
 
         String jsonResponse = readJsonFromFile(this , "case4.json");
@@ -84,7 +144,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    //Case 5: Parse Map Object
+    /*********************************************
+    {
+        "1$": {
+            "amount": 1,
+            "currency": "Dollar"
+        },
+        "2$": {
+            "amount": 2,
+            "currency": "Dollar"
+        },
+        "3€": {
+            "amount": 3,
+            "currency": "Euro"
+        }
+    }
+     ********************************************/
     public static String readJsonFromFile(Context context, String fileName){
 
         String json = null;
