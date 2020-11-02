@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements Callback{
 
     private PlaceHolderClient restClient;
     private Call<List<Post>> fetchAllPosts;
+    private Call<Post> fetchAPost;
+
     private static final String TAG = "MainActivity";
 
     @Override
@@ -35,9 +37,23 @@ public class MainActivity extends AppCompatActivity implements Callback{
         if(restClient==null)
             restClient = createRestClient();
 
+        //Request to get all the posts
+        //getAllPosts();
+
+        getPost(2);
+
+
+
+    }
+
+    private void getAllPosts(){
         fetchAllPosts = restClient.getAllPosts();
         fetchAllPosts.enqueue(this);
+    }
 
+    private void getPost(int postNum){
+        fetchAPost = restClient.getPost(postNum);
+        fetchAPost.enqueue(this);
     }
 
     //Create Retrofit client = BaseUrl + Convertor + OKhttpClient
@@ -69,6 +85,9 @@ public class MainActivity extends AppCompatActivity implements Callback{
             for(Post post:posts){
                 Log.d(TAG, post.toString());
             }
+        }else if(call==fetchAPost){
+            Post post = (Post)response.body();
+            Log.d(TAG, post.toString());
         }
 
     }
