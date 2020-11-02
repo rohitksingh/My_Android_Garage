@@ -7,7 +7,7 @@ import retrofit2.http.GET;
 
 public interface PlaceHolderClient {
 
-    @GET(/posts)
+    @GET("/posts")
     Call<List<Post>> getAllPosts();
 
 }
