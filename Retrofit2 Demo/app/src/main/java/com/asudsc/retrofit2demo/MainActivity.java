@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements Callback{
 
 
         if(restClient==null)
-            restClient = createRestClient();
+            restClient = RestClient.createClient(PlaceHolderClient.class);//createRestClient();
 
         //Request to get all the posts
         //getAllPosts();
