@@ -16,6 +16,10 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ *     The GsonConvertor dependency is not included with 'com.squareup.retrofit2:retrofit:2.7.1'
+ *     Add 'com.squareup.retrofit2:converter-gson:2.7.1' too.
+ */
 public class MainActivity extends AppCompatActivity implements Callback{
 
     private PlaceHolderClient restClient;
@@ -36,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements Callback{
 
     }
 
-    //Create Retrofit client
+    //Create Retrofit client = BaseUrl + Convertor + OKhttpClient
     public PlaceHolderClient createRestClient(){
 
         String API_BASE_URL = "https://jsonplaceholder.typicode.com/";
@@ -60,7 +64,11 @@ public class MainActivity extends AppCompatActivity implements Callback{
     public void onResponse(Call call, Response response) {
 
         if(call==fetchAllPosts){
-            Log.d(TAG, response.toString());
+            Log.d(TAG, response.code()+"");
+            List<Post> posts = (List<Post>)response.body();
+            for(Post post:posts){
+                Log.d(TAG, post.toString());
+            }
         }
 
     }
