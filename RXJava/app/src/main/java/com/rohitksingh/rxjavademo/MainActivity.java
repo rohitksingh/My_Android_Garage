@@ -12,7 +12,9 @@ import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.core.Scheduler;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.functions.Consumer;
 import io.reactivex.rxjava3.functions.Predicate;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView textView;
     private SeekBar seekBar;
+
+    private CompositeDisposable disposables = new CompositeDisposable();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         taskObservable.subscribe(new Observer<Task>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {
+                disposables.add(d);
                 Log.d(TAG, "onSubscribe: called");
             }
 
@@ -80,8 +85,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Another way to subscribe and Dispose the Observable
+//        disposables.add(taskObservable.subscribe(new Consumer<Task>() {
+//            @Override
+//            public void accept(Task task) throws Throwable {
+//
+//            }
+//        }));
+
 
 
     }
 
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        disposables.clear();
+    }
 }
