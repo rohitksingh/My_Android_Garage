@@ -26,6 +26,12 @@ import android.view.MenuItem;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+/**
+ *    Step 1:  Create Observable
+ *
+ *    Step 2: Observe Observable  using Consumer , Observer
+ *    Step 3: Dispose Onserver in onDestroy() method;
+ */
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
