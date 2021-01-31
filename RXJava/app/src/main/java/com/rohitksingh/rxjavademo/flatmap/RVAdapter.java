@@ -3,6 +3,7 @@ package com.rohitksingh.rxjavademo.flatmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.rohitksingh.rxjavademo.R;
@@ -46,7 +47,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PostViewHolder> {
 
     class PostViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView description, numComments, progressBar;
+        private TextView description, numComments;
+        private ProgressBar progressBar;
 
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -57,14 +59,14 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PostViewHolder> {
 
         public void bind(Post post){
 
-            description.setText(post.getBody());
+            description.setText(post.getTitle());
 
             if(post.getComments()==null){
                showProgressBar(true);
                numComments.setText("");
             }else{
                 showProgressBar(false);
-                numComments.setText(post.getComments().size());
+                numComments.setText(post.getComments().size()+"");
             }
 
         }
