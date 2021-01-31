@@ -27,9 +27,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PostViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
-        Post post = posts.get(position);
-        holder.description.setText(post.getBody());
-        holder.numComments.setText(post.getComments().size());
+        holder.bind(posts.get(position));
     }
 
     @Override
@@ -55,6 +53,28 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PostViewHolder> {
             description = itemView.findViewById(R.id.post_desc);
             numComments = itemView.findViewById(R.id.numComments);
             progressBar = itemView.findViewById(R.id.progressbar);
+        }
+
+        public void bind(Post post){
+
+            description.setText(post.getBody());
+
+            if(post.getComments()==null){
+               showProgressBar(true);
+               numComments.setText("");
+            }else{
+                showProgressBar(false);
+                numComments.setText(post.getComments().size());
+            }
+
+        }
+
+        private void showProgressBar(boolean show){
+            if(show){
+                progressBar.setVisibility(View.VISIBLE);
+            }else {
+                progressBar.setVisibility(View.GONE);
+            }
         }
     }
 }
