@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RXJavaDemo">
         <activity
-            android:name=".MainActivity"
+            android:name=".basic.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.RXJavaDemo.NoActionBar">
             <intent-filter>

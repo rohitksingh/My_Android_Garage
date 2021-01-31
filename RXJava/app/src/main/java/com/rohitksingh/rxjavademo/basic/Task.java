@@ -1,4 +1,4 @@
-package com.rohitksingh.rxjavademo;
+package com.rohitksingh.rxjavademo.basic;
 
 public class Task {
 

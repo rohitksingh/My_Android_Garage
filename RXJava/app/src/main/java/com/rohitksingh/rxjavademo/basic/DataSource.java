@@ -1,4 +1,4 @@
-package com.rohitksingh.rxjavademo;
+package com.rohitksingh.rxjavademo.basic;
 
 import java.util.ArrayList;
 import java.util.List;
