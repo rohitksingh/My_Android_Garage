@@ -62,10 +62,10 @@ public class MessageActivity extends AppCompatActivity {
                 });
 
         getAPICallObservable()
-                .subscribe(new Consumer<Integer>() {
+                .subscribe(new Consumer<String>() {
                     @Override
-                    public void accept(Integer integer) throws Throwable {
-                        apicall.setText("API call"+integer);
+                    public void accept(String msg) throws Throwable {
+                        apicall.setText(msg);
                     }
                 });
 
@@ -114,14 +114,14 @@ public class MessageActivity extends AppCompatActivity {
      * @return
      */
 
-    public @NonNull Observable<Integer> getAPICallObservable(){
+    public @NonNull Observable<String> getAPICallObservable(){
         return Observable.range(1,10)
-                .map(new Function<Integer, Integer>() {
+                .map(new Function<Integer, String>() {
                     @Override
-                    public Integer apply(Integer integer) throws Throwable {
+                    public String apply(Integer integer) throws Throwable {
                         Thread.sleep(500);
                         Log.d(TAG, "apply: making API call again");
-                        return integer;
+                        return "API call "+integer;
                     }
                 }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
