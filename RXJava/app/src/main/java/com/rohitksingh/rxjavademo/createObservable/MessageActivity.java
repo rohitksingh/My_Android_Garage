@@ -1,6 +1,7 @@
 package com.rohitksingh.rxjavademo.createObservable;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.rohitksingh.rxjavademo.R;
@@ -19,19 +20,24 @@ import io.reactivex.rxjava3.core.ObservableOnSubscribe;
 import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.functions.Consumer;
 import io.reactivex.rxjava3.functions.Function;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class MessageActivity extends AppCompatActivity {
 
+    private static final String TAG = "MessageActivity";
+
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
-    private TextView message;
+    private TextView message, apicall;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
         message = findViewById(R.id.message);
+        apicall = findViewById(R.id.apicall);
+
         startInstructions()
                 .subscribe(new Observer<String>() {
                     @Override
@@ -55,9 +61,17 @@ public class MessageActivity extends AppCompatActivity {
                     }
                 });
 
+        getAPICallObservable()
+                .subscribe(new Consumer<Integer>() {
+                    @Override
+                    public void accept(Integer integer) throws Throwable {
+                        apicall.setText("API call"+integer);
+                    }
+                });
+
     }
 
-    /**
+    /*************************************************************************************
      *     This method uses create() operator to create Observable
      *     map() operator should be called before scheduleOn and observeOn()
      *     This is the flow
@@ -90,6 +104,30 @@ public class MessageActivity extends AppCompatActivity {
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
+
+
+    /**
+     * This function uses range funtion to create Observable
+     * You can use it in conjunction with map oprator to do some useful task
+     * For eg> Checking an API every 1 sec
+     * range(1,10) -> It means it will have a stream of 10 events
+     * @return
+     */
+
+    public @NonNull Observable<Integer> getAPICallObservable(){
+        return Observable.range(1,10)
+                .map(new Function<Integer, Integer>() {
+                    @Override
+                    public Integer apply(Integer integer) throws Throwable {
+                        Thread.sleep(500);
+                        Log.d(TAG, "apply: making API call again");
+                        return integer;
+                    }
+                }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+
 
     @Override
     protected void onDestroy() {

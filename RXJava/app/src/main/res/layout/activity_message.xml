@@ -11,4 +11,12 @@
         android:textColor="@color/black"
         android:text="Hi"
         />
+    <TextView
+        android:id="@+id/apicall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:textSize="20sp"
+        android:gravity="center"
+        />
 </RelativeLayout>
