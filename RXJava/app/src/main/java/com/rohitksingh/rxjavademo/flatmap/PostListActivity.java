@@ -26,6 +26,18 @@ import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.functions.Function;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
+/**
+ *
+ *   Fetch all posts
+ *   All posts have 100 comments fetch them too
+ *
+ *   So 1st REST Call gets all the Posts                        /posts
+ *   For each Post make another REST call for to get comments   /posts/{id}/comments
+ *
+ *   Chain these calls together using RXJava
+ *         getPostsObservable() -->
+ *
+ */
 public class PostListActivity extends AppCompatActivity {
 
     private static final String TAG = "PostListActivity";
@@ -76,8 +88,8 @@ public class PostListActivity extends AppCompatActivity {
 
     private Observable<Post> getPostsObservable(){
         return ServiceGenerator.getRequestAPI()
-                .getAllPost()
-                .subscribeOn(Schedulers.io())
+                .getAllPost()                                               //Get all the posys
+                .subscribeOn(Schedulers.io())                               //Do it in background thread
                 .observeOn(AndroidSchedulers.mainThread())
                 .flatMap(new Function<List<Post>, ObservableSource<Post>>() {
                     @Override

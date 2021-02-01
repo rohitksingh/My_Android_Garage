@@ -15,6 +15,9 @@
             android:theme="@style/Theme.RXJavaDemo.NoActionBar">
         </activity>
         <activity android:name=".flatmap.PostListActivity">
+        </activity>
+        <activity android:name=".createObservable.MessageActivity"
+            android:label="Instruction">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
