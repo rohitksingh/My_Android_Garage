@@ -57,6 +57,15 @@ public class MessageActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *     This method uses create() operator to create Observable
+     *     map() operator should be called before scheduleOn and observeOn()
+     *     This is the flow
+     *          - Observable.create()               ->Takes ObservableOnSubscribe
+     *                      .map()                  ->Takes Function<String, String>
+     *                      .subscribeOn()          -> Schedulers.io
+     *                      .observeOn()            -> AndroidSchedulers.mainThread
+     */
     public Observable<String> startInstructions(){
 
         return Observable.create(new ObservableOnSubscribe<String>() {
