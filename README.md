@@ -29,6 +29,11 @@ The repository contains following **code samples currently**(More to come).
 - [TabLayout with fragments using inheritance](https://github.com/rohitksingh/My_Android_Garage/tree/master/UI_Stuff/GooglePlayTabLayout)
 ---
 
+<h3 align="center">MVVM + 2-Way DataBinding + Livedata + ViewModel</h3>
+<p align="center"><img width ="800" height="350" src="https://user-images.githubusercontent.com/11274840/112710301-3f5c4580-8e7d-11eb-8dd5-fd2fd99ff5df.png"></p>
+<a href="https://github.com/rohitksingh/LockBox"><p align="center">See project</p></a>
+
+---
 <h3 align="center">Firebase Authentication + Cloud Messaging + RealtimeDatabase + Firebase DataStore</h3>
 <p align="center"><img width ="800" height="350" src="https://user-images.githubusercontent.com/11274840/70845965-da104c80-1e11-11ea-9a8c-afa7ef72b858.jpg"></p>
 <a href="https://github.com/rohitksingh/My_Android_Garage/tree/master/FireBaseAuthentication"><p align="center">See project</p></a>
