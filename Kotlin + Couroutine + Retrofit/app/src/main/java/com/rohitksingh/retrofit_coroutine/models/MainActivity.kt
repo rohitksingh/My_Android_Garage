@@ -6,7 +6,6 @@ import android.widget.TextView
 import com.rohitksingh.retrofit_coroutine.R
 import com.rohitksingh.retrofit_coroutine.networks.RetrofitClient
 import com.rohitksingh.retrofit_coroutine.networks.Webservice
-import retrofit2.Retrofit
 
 class MainActivity : AppCompatActivity() {
 
