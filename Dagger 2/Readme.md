@@ -1,6 +1,6 @@
 ## Dagger 2 Tutorials
 
-These step is used all the time
+These step is used all the time (I consider it as a basic setup boilerplate code!)
 
 - Created an BaseApplication   (define name tag in Manifest.xml file too)
 
